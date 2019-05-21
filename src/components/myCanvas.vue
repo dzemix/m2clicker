@@ -22,6 +22,7 @@ export default {
 <style lang="scss" scoped>
 .main {
   display: flex;
+
   justify-content: center;
   .canvas {
     border: 1px solid black;
