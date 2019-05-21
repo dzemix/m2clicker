@@ -1,11 +1,12 @@
 <template>
   <div class="main">
-    <canvas ref="my-canvas" class="canvas" ></canvas>
+    <canvas @click="click()" ref="my-canvas" class="canvas" ></canvas>
   </div>
 </template>
 
 <script>
-import game from '../game/main.js'
+import main from '../game/main.js'
+import mouse from '../game/mouse.js'
 export default {
   data () {
     return {
@@ -15,7 +16,16 @@ export default {
     this.$refs['my-canvas'].width = 1200
     this.$refs['my-canvas'].height = 600
     var ctx = this.$refs['my-canvas'].getContext('2d')
-    game.init(ctx)
+    main.draw(ctx)
+  },
+  methods: {
+    click () {
+      mouse.otop = this.$refs['my-canvas'].offsetTop
+      mouse.oleft = this.$refs['my-canvas'].offsetLeft
+      mouse.pageY = event.pageY
+      mouse.pageX = event.pageX
+      main.event(mouse)
+    }
   }
 }
 </script>
