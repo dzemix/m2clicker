@@ -20,13 +20,4 @@ html, body {
   margin: 0;
   padding: 0;
 }
-
-.main {
-  position: relative;
-  height: 100vh;
-  width: 100vw;
-  padding: 20px;
-  box-sizing: border-box;
-}
-
 </style>
