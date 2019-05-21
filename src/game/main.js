@@ -8,12 +8,15 @@ var main = {
   draw: function (ctx) {
     var img = new Image()
     img.src = 'static/back.jpg'
-    img.onload = drawimage
-    function drawimage () {
-      ctx.drawImage(this, 0, 0)
-      ctx.fillStyle = '#FF0000'
-      ctx.fillRect(this.mob.left, this.mob.top, this.mob.with, this.mob.height)
+    var drawimage = () => {
+      ctx.drawImage(img, 0, 0)
+      this.drawMob(ctx)
     }
+    img.onload = drawimage
+  },
+  drawMob: function (ctx) {
+    ctx.fillStyle = '#FF0000'
+    ctx.fillRect(this.mob.left, this.mob.top, this.mob.width, this.mob.height)
   },
   event: function (mouse) {
     if (

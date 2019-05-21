@@ -17,6 +17,7 @@ export default {
     this.$refs['my-canvas'].height = 600
     var ctx = this.$refs['my-canvas'].getContext('2d')
     main.draw(ctx)
+    // main.drawMob(ctx)
   },
   methods: {
     click () {
