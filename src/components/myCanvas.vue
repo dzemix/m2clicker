@@ -1,11 +1,11 @@
 <template>
   <div class="my-canvas-wrapper">
     <canvas ref="my-canvas" class="canvas" ></canvas>
-    <slot></slot>
   </div>
 </template>
 
 <script>
+import game from '../game/main.js'
 export default {
   data () {
     return {
@@ -15,9 +15,7 @@ export default {
     this.$refs['my-canvas'].width = 1200
     this.$refs['my-canvas'].height = 600
     var ctx = this.$refs['my-canvas'].getContext('2d')
-    ctx.moveTo(0, 0)
-    ctx.lineTo(250, 100)
-    ctx.stroke()
+    game.first(ctx)
   }
 }
 </script>
