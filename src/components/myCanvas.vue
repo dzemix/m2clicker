@@ -10,13 +10,14 @@ import mouse from '../game/mouse.js'
 export default {
   data () {
     return {
+      ctx: ''
     }
   },
   mounted () {
     this.$refs['my-canvas'].width = 1200
     this.$refs['my-canvas'].height = 600
-    var ctx = this.$refs['my-canvas'].getContext('2d')
-    main.draw(ctx)
+    this.ctx = this.$refs['my-canvas'].getContext('2d')
+    main.draw(this.ctx)
   },
   methods: {
     click () {
@@ -24,7 +25,7 @@ export default {
       mouse.oleft = this.$refs['my-canvas'].offsetLeft
       mouse.pageY = event.pageY
       mouse.pageX = event.pageX
-      main.event(mouse)
+      main.event(mouse, this.ctx)
     }
   }
 }
