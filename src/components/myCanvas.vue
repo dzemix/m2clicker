@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import main from '../game/main.js'
+import game from '../game/game.js'
 import mouse from '../game/mouse.js'
 export default {
   data () {
@@ -17,7 +17,7 @@ export default {
     this.$refs['my-canvas'].width = 1200
     this.$refs['my-canvas'].height = 600
     this.ctx = this.$refs['my-canvas'].getContext('2d')
-    main.draw(this.ctx)
+    game.main(this.ctx)
   },
   methods: {
     click () {
@@ -25,7 +25,7 @@ export default {
       mouse.oleft = this.$refs['my-canvas'].offsetLeft
       mouse.pageY = event.pageY
       mouse.pageX = event.pageX
-      main.event(mouse, this.ctx)
+      game.event(mouse, this.ctx)
     }
   }
 }

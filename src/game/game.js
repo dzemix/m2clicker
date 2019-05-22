@@ -1,4 +1,7 @@
-var main = {
+var game = {
+  interaction: {
+    inventory: false
+  },
   mob: {
     left: 525,
     top: 300,
@@ -31,17 +34,14 @@ var main = {
       }
     }
   },
-  draw: function (ctx) {
+  main: function (ctx) {
     var img = new Image()
-    img.src = 'static/back.jpg'
-    var drawimage = () => {
-      console.log('drawimage')
+    img.src = '/static/back.jpg'
+    setInterval(() => {
       ctx.drawImage(img, 0, 0)
       this.drawMob(ctx)
       this.drawInterface(ctx)
-      this.drawinvButton(ctx)
-    }
-    img.onload = drawimage
+    }, 40)
   },
   drawMob: function (ctx) {
     ctx.fillStyle = '#FF0000'
@@ -53,20 +53,12 @@ var main = {
       this.interface.lowPanel.top,
       this.interface.lowPanel.width,
       this.interface.lowPanel.height)
-  },
-  drawinvButton: function (ctx) {
     ctx.fillStyle = 'red'
     ctx.fillRect(this.interface.invButton.left,
       this.interface.invButton.top,
       this.interface.invButton.width,
       this.interface.invButton.height)
-  },
-  event: function (mouse, ctx) {
-    if (mouse.isOn(this.mob)) {
-      console.log('mob')
-    }
-    if (mouse.isOn(this.interface.invButton)) {
-      console.log('invbutton')
+    if (this.interaction.inventory) {
       ctx.fillStyle = 'yellow'
       ctx.fillRect(this.interface.inventory.left,
         this.interface.inventory.top,
@@ -78,9 +70,18 @@ var main = {
         this.interface.inventory.closeButton.width,
         this.interface.inventory.closeButton.height)
     }
-    if(mouse.isOn(this.interface.inventory.closeButton)) {
-      this.draw(ctx)
+  },
+  event: function (mouse, ctx) {
+    if (mouse.isOn(this.mob)) {
+      console.log('mob')
+    }
+    if (mouse.isOn(this.interface.invButton)) {
+      console.log('invbutton')
+      this.interaction.inventory = true
+    }
+    if (mouse.isOn(this.interface.inventory.closeButton)) {
+      this.interaction.inventory = false
     }
   }
 }
-export default main
+export default game
