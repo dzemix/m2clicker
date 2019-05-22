@@ -77,7 +77,11 @@ var game = {
     }
     if (mouse.isOn(this.interface.invButton)) {
       console.log('invbutton')
-      this.interaction.inventory = true
+      if(this.interaction.inventory) {
+        this.interaction.inventory = false
+      } else {
+        this.interaction.inventory = true
+      }
     }
     if (mouse.isOn(this.interface.inventory.closeButton)) {
       this.interaction.inventory = false
