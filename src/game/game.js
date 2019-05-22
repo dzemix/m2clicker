@@ -22,20 +22,18 @@ var game = {
       height: 50
     },
     inventory: {
-      left: 950,
-      top: 100,
-      width: 250,
-      height: 450,
+      left: 1050,
+      top: 25,
       closeButton: {
         left: 1170,
-        top: 100,
+        top: 25,
         width: 30,
         height: 30
       }
     }
   },
   main: function (ctx) {
-    var img = new Image()
+    let img = new Image()
     img.src = '/static/back.jpg'
     setInterval(() => {
       ctx.drawImage(img, 0, 0)
@@ -58,17 +56,13 @@ var game = {
       this.interface.invButton.top,
       this.interface.invButton.width,
       this.interface.invButton.height)
+    let img = new Image()
+    img.src = '/static/inventory.png'
     if (this.interaction.inventory) {
-      ctx.fillStyle = 'yellow'
-      ctx.fillRect(this.interface.inventory.left,
-        this.interface.inventory.top,
-        this.interface.inventory.width,
-        this.interface.inventory.height)
-      ctx.fillStyle = 'blue'
-      ctx.fillRect(this.interface.inventory.closeButton.left,
-        this.interface.inventory.closeButton.top,
-        this.interface.inventory.closeButton.width,
-        this.interface.inventory.closeButton.height)
+      ctx.drawImage(
+        img,
+        this.interface.inventory.left,
+        this.interface.inventory.top)
     }
   },
   event: function (mouse, ctx) {
@@ -77,7 +71,7 @@ var game = {
     }
     if (mouse.isOn(this.interface.invButton)) {
       console.log('invbutton')
-      if(this.interaction.inventory) {
+      if (this.interaction.inventory) {
         this.interaction.inventory = false
       } else {
         this.interaction.inventory = true
