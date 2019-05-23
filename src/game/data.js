@@ -1,10 +1,11 @@
 var data = {}
 data.status = {
   over: false,
-  overText: 'a'
+  overText: ''
 }
 data.stats = {
-  hp: 100
+  hp: 100,
+  exp: 0
 }
 data.mob = {}
 data.mob.maxHp = 150

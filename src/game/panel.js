@@ -45,6 +45,18 @@ panel.hp = {
   width: data.stats.hp,
   height: panel.hpBorder.height - 2
 }
+panel.expBorder = {
+  left: 140,
+  top: panel.hpBorder.top,
+  width: panel.hpBorder.width,
+  height: panel.hpBorder.height
+}
+panel.exp = {
+  left: panel.expBorder.left + 1,
+  top: panel.expBorder.top + 1,
+  width: data.stats.exp,
+  height: panel.hpBorder.height - 2
+}
 panel.draw = function (ctx) {
   // draw low panel
   ctx.fillStyle = '#000000'
@@ -62,6 +74,13 @@ panel.draw = function (ctx) {
   this.hp.width = data.stats.hp
   ctx.fillStyle = 'red'
   ctx.fillRect(this.hp.left, this.hp.top, this.hp.width, this.hp.height)
+  // draw exp border
+  ctx.strokeStyle = 'blue'
+  ctx.strokeRect(this.expBorder.left, this.expBorder.top, this.expBorder.width, this.expBorder.height)
+  // draw exp
+  this.exp.width = data.stats.exp
+  ctx.fillStyle = 'yellow'
+  ctx.fillRect(this.exp.left, this.exp.top, this.exp.width, this.exp.height)
   // draw inventory button
   ctx.fillStyle = 'red'
   ctx.fillRect(this.interface.invButton.left,

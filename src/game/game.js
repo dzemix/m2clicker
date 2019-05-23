@@ -34,7 +34,7 @@ game.main = function (ctx) {
       data.status.over = true
       data.status.overText = 'You Lose'
     }
-  }, 100)
+  }, 500)
 }
 game.drawMob = function (ctx) {
   ctx.fillStyle = 'blue'
@@ -53,8 +53,14 @@ game.event = function (mouse, ctx) {
       }
     }
     if (data.mob.hp <= 0) {
-      data.status.overText = 'You Defeat'
-      data.status.over = true
+      if (data.stats.exp < 100) {
+        data.stats.exp += 20
+        data.mob.hp = data.mob.maxHp
+      } else {
+        data.status.over = true
+        data.status.overText = 'You Win'
+        data.stats.exp = 0
+      }
     }
   }
   if (mouse.isOn(panel.interface.invButton)) {
