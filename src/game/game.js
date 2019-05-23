@@ -24,13 +24,13 @@ game.main = function (ctx) {
     panel.draw(ctx)
   }, 40)
   // mob hits
-  var mobInterval = setInterval(() => {
+  setInterval(() => {
     if (!data.status.over) {
-      if (data.stats.hp > 0 ) {
+      if (data.stats.hp > 0) {
         data.stats.hp -= 1
       }
     }
-    if (data.stats.hp <= 0 ) {
+    if (data.stats.hp <= 0) {
       data.status.over = true
       data.status.overText = 'You Lose'
     }
@@ -47,10 +47,10 @@ game.drawMob = function (ctx) {
 }
 game.event = function (mouse, ctx) {
   if (mouse.isOn(this.mob)) {
-    if(!data.status.over) {
+    if (!data.status.over) {
       if (data.mob.hp > 0) {
         data.mob.hp -= 10
-      }      
+      }
     }
     if (data.mob.hp <= 0) {
       data.status.overText = 'You Defeat'

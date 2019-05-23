@@ -37,12 +37,12 @@ panel.hpBorder = {
   left: 20,
   top: panel.interface.lowPanel.top + 10,
   width: 102,
-  height:30
+  height: 30
 }
 panel.hp = {
   left: panel.hpBorder.left + 1,
   top: panel.hpBorder.top + 1,
-  width: data.stats.hp ,
+  width: data.stats.hp,
   height: panel.hpBorder.height - 2
 }
 panel.draw = function (ctx) {
@@ -61,7 +61,7 @@ panel.draw = function (ctx) {
   // draw hp
   this.hp.width = data.stats.hp
   ctx.fillStyle = 'red'
-  ctx.fillRect(this.hp.left,this.hp.top,this.hp.width,this.hp.height)
+  ctx.fillRect(this.hp.left, this.hp.top, this.hp.width, this.hp.height)
   // draw inventory button
   ctx.fillStyle = 'red'
   ctx.fillRect(this.interface.invButton.left,
@@ -78,7 +78,7 @@ panel.draw = function (ctx) {
       this.interface.inventory.top)
   }
   // if game is over draw restart button and text
-  if(data.status.over) {
+  if (data.status.over) {
     ctx.font = '40px Georgia'
     ctx.fillStyle = 'yellow'
     ctx.fillText(data.status.overText, 500, 200)
@@ -89,7 +89,7 @@ panel.draw = function (ctx) {
     ctx.font = '20px Georgia'
     ctx.fillStyle = 'black'
     ctx.fillText('restart', this.interface.restart.left + 20,
-    this.interface.restart.top + 30)
+      this.interface.restart.top + 30)
   }
 }
 export default panel
