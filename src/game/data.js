@@ -1,7 +1,7 @@
 var data = {}
 data.status = {
   over: false,
-  overText: ''
+  overText: 'test'
 }
 data.stats = {
   hp: 100
