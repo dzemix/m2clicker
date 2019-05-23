@@ -21,6 +21,14 @@ game.main = function (ctx) {
     this.drawMob(ctx)
     panel.draw(ctx)
   }, 40)
+  setInterval(() => {
+    if(panel.hp.width > 0) {
+      panel.hp.width -= 1
+    } else {
+      console.log('u lose')
+      return
+    }
+  }, 100)
 }
 game.drawMob = function (ctx) {
   ctx.fillStyle = 'blue'
