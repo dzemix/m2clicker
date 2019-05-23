@@ -34,7 +34,8 @@ game.main = function (ctx) {
       data.status.over = true
       data.status.overText = 'You Lose'
     }
-  }, 500)
+  }, 100)
+  this.keyListener()
 }
 game.drawMob = function (ctx) {
   ctx.fillStyle = 'blue'
@@ -78,8 +79,20 @@ game.event = function (mouse, ctx) {
     console.log('restart')
     data.status.over = false
     data.stats.hp = 100
+    data.stats.exp = 0
     data.mob.hp = 150
   }
 }
-
+game.keyListener = function () {
+  document.addEventListener('keyup', function (evt) {
+    if (evt.keyCode === 49) {
+      if (data.stats.hp <= 90) {
+        data.stats.hp += 10
+        console.log(data.stats.hp)
+      } else {
+        data.stats.hp = 100
+      }
+    }
+  })
+}
 export default game
