@@ -1,5 +1,5 @@
-var data = require('./data')
-var panel = module.exports = {}
+import data from './data'
+var panel = {}
 panel.interaction = {
   inventory: false
 }
@@ -92,3 +92,4 @@ panel.draw = function (ctx) {
     this.interface.restart.top + 30)
   }
 }
+export default panel

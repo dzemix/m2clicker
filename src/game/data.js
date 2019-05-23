@@ -1,4 +1,4 @@
-var data = module.exports = {}
+var data = {}
 data.status = {
   over: false,
   overText: 'some'
@@ -14,3 +14,4 @@ data.mob.percent = function () {
   var final = percent.toFixed(2)
   return final
 }
+export default data

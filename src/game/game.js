@@ -1,5 +1,5 @@
-var panel = require('./panel')
-var data = require('./data')
+import panel from './panel'
+import data from './data'
 var game = {}
 game.mob = {
   left: 525,
