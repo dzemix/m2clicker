@@ -4,6 +4,12 @@ panel.interaction = {
   inventory: false
 }
 panel.interface = {
+  restart: {
+    left: 550,
+    top: 210,
+    width: 100,
+    height: 50
+  },
   lowPanel: {
     left: 0,
     top: 550,
@@ -70,5 +76,19 @@ panel.draw = function (ctx) {
       img,
       this.interface.inventory.left,
       this.interface.inventory.top)
+  }
+  // if game is over draw restart button and text
+  if(data.status.over) {
+    ctx.font = '40px Georgia'
+    ctx.fillStyle = 'yellow'
+    ctx.fillText(data.status.overText, 500, 200)
+    ctx.fillRect(this.interface.restart.left,
+      this.interface.restart.top,
+      this.interface.restart.width,
+      this.interface.restart.height)
+    ctx.font = '20px Georgia'
+    ctx.fillStyle = 'black'
+    ctx.fillText('restart', this.interface.restart.left + 20,
+    this.interface.restart.top + 30)
   }
 }

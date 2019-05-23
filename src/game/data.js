@@ -1,6 +1,7 @@
 var data = module.exports = {}
 data.status = {
-  over: false 
+  over: false,
+  overText: 'some'
 }
 data.stats = {
   hp: 100

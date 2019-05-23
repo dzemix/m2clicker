@@ -32,8 +32,7 @@ game.main = function (ctx) {
     }
     if (data.stats.hp <= 0 ) {
       data.status.over = true
-      console.log('u lose')
-      clearInterval(mobInterval)
+      data.status.overText = 'You Lose'
     }
   }, 100)
 }
@@ -54,8 +53,8 @@ game.event = function (mouse, ctx) {
       }      
     }
     if (data.mob.hp <= 0) {
+      data.status.overText = 'You Defeat'
       data.status.over = true
-      console.log('u defet mob')
     }
   }
   if (mouse.isOn(panel.interface.invButton)) {
@@ -68,6 +67,12 @@ game.event = function (mouse, ctx) {
   }
   if (mouse.isOn(panel.interface.inventory.closeButton)) {
     panel.interaction.inventory = false
+  }
+  if (mouse.isOn(panel.interface.restart) && data.status.over) {
+    console.log('restart')
+    data.status.over = false
+    data.stats.hp = 100
+    data.mob.hp = 150
   }
 }
 
