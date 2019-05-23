@@ -1,3 +1,4 @@
+var data = require('./data')
 var panel = module.exports = {}
 panel.interaction = {
   inventory: false
@@ -35,7 +36,7 @@ panel.hpBorder = {
 panel.hp = {
   left: panel.hpBorder.left + 1,
   top: panel.hpBorder.top + 1,
-  width: 100,
+  width: data.stats.hp ,
   height: panel.hpBorder.height - 2
 }
 panel.draw = function (ctx) {
@@ -52,6 +53,7 @@ panel.draw = function (ctx) {
     this.hpBorder.width,
     this.hpBorder.height)
   // draw hp
+  this.hp.width = data.stats.hp
   ctx.fillStyle = 'red'
   ctx.fillRect(this.hp.left,this.hp.top,this.hp.width,this.hp.height)
   // draw inventory button
