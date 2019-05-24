@@ -1,7 +1,6 @@
 import panel from './panel'
 import data from './data'
 import draw from './draw'
-
 var game = {}
 game.interval = ''
 game.moveItem = ''
@@ -115,10 +114,10 @@ game.move = function (mouse, ctx) {
   potion.src = '/static/redPotion.png'
   var potion2 = new Image()
   potion2.src = '/static/bluePotion.png'
-  if (this.moveItem == 1) {
+  if (this.moveItem === 1) {
     ctx.drawImage(potion, mouse.left() - 10, mouse.top() - 10)
   }
-  if (this.moveItem == 2 ) {
+  if (this.moveItem === 2) {
     ctx.drawImage(potion2, mouse.left() - 10, mouse.top() - 10)
   }
 }
