@@ -1,6 +1,7 @@
 import panel from './panel'
 import data from './data'
 import draw from './draw'
+import assets from './assets'
 var game = {}
 game.interval = ''
 game.moveItem = ''
@@ -48,6 +49,7 @@ game.main = function (ctx, mouse) {
     }
   }, 100)
   this.keyListener()
+  console.log(assets.interface)
 }
 game.drawMob = function (ctx) {
   // draw mob and mob underHp
@@ -78,7 +80,7 @@ game.event = function (mouse, ctx) {
       }
     }
   }
-  if (mouse.isOn(panel.interface.invButton)) {
+  if (mouse.isOn(assets.interface.invButton)) {
     console.log('invbutton')
     if (panel.interaction.inventory) {
       panel.interaction.inventory = false
@@ -86,10 +88,10 @@ game.event = function (mouse, ctx) {
       panel.interaction.inventory = true
     }
   }
-  if (mouse.isOn(panel.interface.inventory.closeButton)) {
+  if (mouse.isOn(assets.interface.inventory.closeButton)) {
     panel.interaction.inventory = false
   }
-  if (mouse.isOn(panel.interface.restart) && data.status.over) {
+  if (mouse.isOn(assets.interface.restart) && data.status.over) {
     console.log('restart')
     data.status.over = false
     data.stats.hp = 95
