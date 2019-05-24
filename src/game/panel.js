@@ -27,24 +27,20 @@ panel.draw = function (ctx) {
   assets.exp.width = data.stats.exp
   draw.square(ctx, assets.exp)
   // draw interface
-  let lowPanel = new Image()
-  lowPanel.src = '/static/panel2.png'
-  ctx.drawImage(lowPanel, 0, 540)
+  draw.image(ctx, '/static/panel2.png', 0, 540)
   // draw hp
   assets.hp.width = data.stats.hp
   draw.square(ctx, assets.hp)
   // draw red potion
-  draw.image(ctx, panel.slot1)
+  draw.item(ctx, panel.slot1)
   // draw blue potion
-  draw.image(ctx, panel.slot2)
+  draw.item(ctx, panel.slot2)
   // draw inv button
   draw.square(ctx, assets.interface.invButton)
   // if inventory true draw inventory
-  let img = new Image()
-  img.src = '/static/inventory.png'
   if (this.interaction.inventory) {
-    ctx.drawImage(
-      img,
+    draw.image(ctx,
+      '/static/inventory.png',
       assets.interface.inventory.left,
       assets.interface.inventory.top)
   }

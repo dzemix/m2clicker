@@ -27,11 +27,9 @@ game.mobHp = {
   color: 'red'
 }
 game.main = function (ctx, mouse) {
-  let img = new Image()
-  img.src = '/static/back.jpg'
   // draw
   setInterval(() => {
-    ctx.drawImage(img, 0, 0)
+    draw.image(ctx, '/static/back.jpg', 0, 0)
     this.drawMob(ctx)
     panel.draw(ctx)
     this.move(mouse, ctx)
@@ -49,14 +47,11 @@ game.main = function (ctx, mouse) {
     }
   }, 100)
   this.keyListener()
-  console.log(assets.interface)
 }
 game.drawMob = function (ctx) {
   // draw mob and mob underHp
   // draw.square(ctx, this.mob)
-  var dog = new Image()
-  dog.src = '/static/dog.png'
-  ctx.drawImage(dog, this.mob.left, this.mob.top)
+  draw.image(ctx, '/static/dog.png', this.mob.left, this.mob.top)
   draw.square(ctx, this.mobUnderHp)
   // draw mob hp
   this.mobHp.width = this.mob.width * data.mob.percent()
