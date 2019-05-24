@@ -4,7 +4,7 @@ data.status = {
   overText: ''
 }
 data.stats = {
-  hp: 100,
+  hp: 60,
   exp: 0
 }
 data.mob = {}

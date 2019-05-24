@@ -18,70 +18,51 @@ panel.interface = {
   },
   invButton: {
     left: 1150,
-    top: 550,
+    top: 567,
     width: 1200,
-    height: 50
+    height: 31
   },
   inventory: {
     left: 1050,
-    top: 25,
+    top: 37,
     closeButton: {
       left: 1170,
-      top: 25,
+      top: 37,
       width: 30,
       height: 30
     }
   }
 }
-panel.hpBorder = {
-  left: 20,
-  top: panel.interface.lowPanel.top + 10,
-  width: 102,
-  height: 30
-}
 panel.hp = {
-  left: panel.hpBorder.left + 1,
-  top: panel.hpBorder.top + 1,
+  left: 74,
+  top: panel.interface.lowPanel.top + 20,
   width: data.stats.hp,
-  height: panel.hpBorder.height - 2
-}
-panel.expBorder = {
-  left: 140,
-  top: panel.hpBorder.top,
-  width: panel.hpBorder.width,
-  height: panel.hpBorder.height
+  height: 8
 }
 panel.exp = {
-  left: panel.expBorder.left + 1,
-  top: panel.expBorder.top + 1,
+  left: 177,
+  top: panel.interface.lowPanel.top + 22,
   width: data.stats.exp,
-  height: panel.hpBorder.height - 2
+  height: 23
 }
 panel.draw = function (ctx) {
   // draw low panel
-  ctx.fillStyle = '#000000'
-  ctx.fillRect(this.interface.lowPanel.left,
-    this.interface.lowPanel.top,
-    this.interface.lowPanel.width,
-    this.interface.lowPanel.height)
-  // draw hp border
-  ctx.strokeStyle = 'yellow'
-  ctx.strokeRect(this.hpBorder.left,
-    this.hpBorder.top,
-    this.hpBorder.width,
-    this.hpBorder.height)
-  // draw hp
-  this.hp.width = data.stats.hp
-  ctx.fillStyle = 'red'
-  ctx.fillRect(this.hp.left, this.hp.top, this.hp.width, this.hp.height)
-  // draw exp border
-  ctx.strokeStyle = 'blue'
-  ctx.strokeRect(this.expBorder.left, this.expBorder.top, this.expBorder.width, this.expBorder.height)
+  // draw black square under interface
+  ctx.fillStyle = 'black'
+  ctx.fillRect(175, 570, 200, 30)
   // draw exp
   this.exp.width = data.stats.exp
   ctx.fillStyle = 'yellow'
   ctx.fillRect(this.exp.left, this.exp.top, this.exp.width, this.exp.height)
-  // draw inventory button
+  // draw interface
+  let lowPanel = new Image()
+  lowPanel.src = '/static/panel2.png'
+  ctx.drawImage(lowPanel, 0, 540)
+  // draw hp
+  this.hp.width = data.stats.hp
+  ctx.fillStyle = 'red'
+  ctx.fillRect(this.hp.left, this.hp.top, this.hp.width, this.hp.height)
+  // draw inv button
   ctx.fillStyle = 'red'
   ctx.fillRect(this.interface.invButton.left,
     this.interface.invButton.top,

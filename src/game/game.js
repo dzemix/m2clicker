@@ -78,7 +78,7 @@ game.event = function (mouse, ctx) {
   if (mouse.isOn(panel.interface.restart) && data.status.over) {
     console.log('restart')
     data.status.over = false
-    data.stats.hp = 100
+    data.stats.hp = 95
     data.stats.exp = 0
     data.mob.hp = 150
   }
@@ -90,7 +90,7 @@ game.keyListener = function () {
         data.stats.hp += 10
         console.log(data.stats.hp)
       } else {
-        data.stats.hp = 100
+        data.stats.hp = 95
       }
     }
   })
