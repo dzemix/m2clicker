@@ -61,8 +61,14 @@ panel.exp = {
 panel.slot1 = {
   left: 495,
   top: 568,
-  width: 30,
-  height: 30
+  width: 25,
+  height: 25
+}
+panel.slot2 = {
+  left: 526,
+  top: 568,
+  width: 25,
+  height: 25
 }
 panel.draw = function (ctx) {
   // draw low panel
@@ -82,6 +88,10 @@ panel.draw = function (ctx) {
   var redPotion = new Image()
   redPotion.src = '/static/redPotion.png'
   ctx.drawImage(redPotion, this.slot1.left, this.slot1.top)
+  //draw blue potion 
+  var bluePotion = new Image() 
+  bluePotion.src = '/static/bluePotion.png'
+  ctx.drawImage(bluePotion, this.slot2.left, this.slot2.top)
   // draw inv button
   draw.square(ctx, this.interface.invButton)
   // if inventory true draw inventory

@@ -1,7 +1,7 @@
 import panel from './panel'
 import data from './data'
 import draw from './draw'
-import mouse from './mouse'
+
 var game = {}
 game.interval = ''
 game.moveItem = ''
@@ -113,13 +113,21 @@ game.keyListener = function () {
 game.move = function (mouse, ctx) {
   var potion = new Image()
   potion.src = '/static/redPotion.png'
-  if (this.moveItem) {
+  var potion2 = new Image()
+  potion2.src = '/static/bluePotion.png'
+  if (this.moveItem == 1) {
     ctx.drawImage(potion, mouse.left() - 10, mouse.top() - 10)
-  }  
+  }
+  if (this.moveItem == 2 ) {
+    ctx.drawImage(potion2, mouse.left() - 10, mouse.top() - 10)
+  }
 }
 game.stickyItem = function (mouse) {
   if (mouse.isOn(panel.slot1)) {
-    this.moveItem = true
+    this.moveItem = 1
+  }
+  if (mouse.isOn(panel.slot2)) {
+    this.moveItem = 2
   }
 }
 export default game
