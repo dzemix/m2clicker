@@ -4,9 +4,9 @@ import draw from './draw'
 var game = {}
 game.mob = {
   left: 525,
-  top: 300,
+  top: 350,
   width: 150,
-  height: 200,
+  height: 170,
   color: 'blue'
 }
 game.mobUnderHp = {
@@ -48,7 +48,10 @@ game.main = function (ctx) {
 }
 game.drawMob = function (ctx) {
   // draw mob and mob underHp
-  draw.square(ctx, this.mob)
+  // draw.square(ctx, this.mob)
+  var dog = new Image()
+  dog.src = '/static/dog.png'
+  ctx.drawImage(dog, this.mob.left, this.mob.top)
   draw.square(ctx, this.mobUnderHp)
   // draw mob hp
   this.mobHp.width = this.mob.width * data.mob.percent()
