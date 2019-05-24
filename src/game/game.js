@@ -1,18 +1,27 @@
 import panel from './panel'
 import data from './data'
+import draw from './draw'
 var game = {}
 game.mob = {
   left: 525,
   top: 300,
   width: 150,
-  height: 200
+  height: 200,
+  color: 'blue'
+}
+game.mobUnderHp = {
+  left: game.mob.left,
+  top: game.mob.top - 20,
+  width: game.mob.width,
+  height: 10,
+  color: 'blue'
 }
 game.mobHp = {
   left: game.mob.left,
   top: game.mob.top - 20,
   width: game.mob.width,
   height: 10,
-  hp: game.mob.width
+  color: 'red'
 }
 game.main = function (ctx) {
   let img = new Image()
@@ -38,13 +47,12 @@ game.main = function (ctx) {
   this.keyListener()
 }
 game.drawMob = function (ctx) {
-  ctx.fillStyle = 'blue'
-  ctx.fillRect(this.mob.left, this.mob.top, this.mob.width, this.mob.height)
-  ctx.fillRect(this.mobHp.left, this.mobHp.top, this.mobHp.width, this.mobHp.height)
+  // draw mob and mob underHp
+  draw.square(ctx, this.mob)
+  draw.square(ctx, this.mobUnderHp)
   // draw mob hp
-  this.mobHp.hp = this.mob.width * data.mob.percent()
-  ctx.fillStyle = 'red'
-  ctx.fillRect(this.mobHp.left, this.mobHp.top, this.mobHp.hp, this.mobHp.height)
+  this.mobHp.width = this.mob.width * data.mob.percent()
+  draw.square(ctx, this.mobHp)
 }
 game.event = function (mouse, ctx) {
   if (mouse.isOn(this.mob)) {

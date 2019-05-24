@@ -1,4 +1,5 @@
 import data from './data'
+import draw from './draw'
 var panel = {}
 panel.interaction = {
   inventory: false
@@ -8,19 +9,22 @@ panel.interface = {
     left: 550,
     top: 210,
     width: 100,
-    height: 50
+    height: 50,
+    color: 'yellow'
   },
   lowPanel: {
     left: 0,
     top: 550,
     width: 1200,
-    height: 50
+    height: 50,
+    color: 'black'
   },
   invButton: {
     left: 1150,
     top: 567,
     width: 1200,
-    height: 31
+    height: 31,
+    color: 'red'
   },
   inventory: {
     left: 1050,
@@ -37,37 +41,39 @@ panel.hp = {
   left: 74,
   top: panel.interface.lowPanel.top + 20,
   width: data.stats.hp,
-  height: 8
+  height: 8,
+  color: 'red'
+}
+panel.underExp = {
+  left: 175,
+  top: 570,
+  width: 200,
+  height: 30,
+  color: 'black'
 }
 panel.exp = {
   left: 177,
   top: panel.interface.lowPanel.top + 22,
   width: data.stats.exp,
-  height: 23
+  height: 23,
+  color: 'yellow'
 }
 panel.draw = function (ctx) {
   // draw low panel
   // draw black square under interface
-  ctx.fillStyle = 'black'
-  ctx.fillRect(175, 570, 200, 30)
+  draw.square(ctx, this.underExp)
   // draw exp
   this.exp.width = data.stats.exp
-  ctx.fillStyle = 'yellow'
-  ctx.fillRect(this.exp.left, this.exp.top, this.exp.width, this.exp.height)
+  draw.square(ctx, this.exp)
   // draw interface
   let lowPanel = new Image()
   lowPanel.src = '/static/panel2.png'
   ctx.drawImage(lowPanel, 0, 540)
   // draw hp
   this.hp.width = data.stats.hp
-  ctx.fillStyle = 'red'
-  ctx.fillRect(this.hp.left, this.hp.top, this.hp.width, this.hp.height)
+  draw.square(ctx, this.hp)
   // draw inv button
-  ctx.fillStyle = 'red'
-  ctx.fillRect(this.interface.invButton.left,
-    this.interface.invButton.top,
-    this.interface.invButton.width,
-    this.interface.invButton.height)
+  draw.square(ctx, this.interface.invButton)
   // if inventory true draw inventory
   let img = new Image()
   img.src = '/static/inventory.png'
@@ -82,10 +88,7 @@ panel.draw = function (ctx) {
     ctx.font = '40px Georgia'
     ctx.fillStyle = 'yellow'
     ctx.fillText(data.status.overText, 500, 200)
-    ctx.fillRect(this.interface.restart.left,
-      this.interface.restart.top,
-      this.interface.restart.width,
-      this.interface.restart.height)
+    draw.square(ctx, this.interface.restart)
     ctx.font = '20px Georgia'
     ctx.fillStyle = 'black'
     ctx.fillText('restart', this.interface.restart.left + 20,
