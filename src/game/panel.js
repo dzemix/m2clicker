@@ -58,6 +58,10 @@ panel.exp = {
   height: 23,
   color: 'yellow'
 }
+panel.slot1 = {
+  left: 495,
+  top: 568
+}
 panel.draw = function (ctx) {
   // draw low panel
   // draw black square under interface
@@ -72,6 +76,10 @@ panel.draw = function (ctx) {
   // draw hp
   this.hp.width = data.stats.hp
   draw.square(ctx, this.hp)
+  // draw red potion
+  var redPotion = new Image()
+  redPotion.src = '/static/redPotion.png'
+  ctx.drawImage(redPotion, this.slot1.left, this.slot1.top)
   // draw inv button
   draw.square(ctx, this.interface.invButton)
   // if inventory true draw inventory
