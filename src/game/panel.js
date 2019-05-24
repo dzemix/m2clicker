@@ -5,27 +5,6 @@ var panel = {}
 panel.interaction = {
   inventory: false
 }
-panel.hp = {
-  left: 74,
-  top: assets.interface.lowPanel.top + 20,
-  width: data.stats.hp,
-  height: 8,
-  color: 'red'
-}
-panel.underExp = {
-  left: 175,
-  top: 570,
-  width: 200,
-  height: 30,
-  color: 'black'
-}
-panel.exp = {
-  left: 177,
-  top: assets.interface.lowPanel.top + 22,
-  width: data.stats.exp,
-  height: 23,
-  color: 'yellow'
-}
 panel.slot1 = {
   itemId: 0,
   left: 495,
@@ -43,17 +22,17 @@ panel.slot2 = {
 panel.draw = function (ctx) {
   // draw low panel
   // draw black square under interface
-  draw.square(ctx, this.underExp)
+  draw.square(ctx, assets.underExp)
   // draw exp
-  this.exp.width = data.stats.exp
-  draw.square(ctx, this.exp)
+  assets.exp.width = data.stats.exp
+  draw.square(ctx, assets.exp)
   // draw interface
   let lowPanel = new Image()
   lowPanel.src = '/static/panel2.png'
   ctx.drawImage(lowPanel, 0, 540)
   // draw hp
-  this.hp.width = data.stats.hp
-  draw.square(ctx, this.hp)
+  assets.hp.width = data.stats.hp
+  draw.square(ctx, assets.hp)
   // draw red potion
   draw.image(ctx, panel.slot1)
   // draw blue potion

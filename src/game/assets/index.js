@@ -1,3 +1,4 @@
+import data from '../data'
 var index = {}
 index.interface = {
   restart: {
@@ -31,5 +32,26 @@ index.interface = {
       height: 30
     }
   }
+}
+index.hp = {
+  left: 74,
+  top: index.interface.lowPanel.top + 20,
+  width: data.stats.hp,
+  height: 8,
+  color: 'red'
+}
+index.underExp = {
+  left: 175,
+  top: 570,
+  width: 200,
+  height: 30,
+  color: 'black'
+}
+index.exp = {
+  left: 177,
+  top: index.interface.lowPanel.top + 22,
+  width: data.stats.exp,
+  height: 23,
+  color: 'yellow'
 }
 export default index
