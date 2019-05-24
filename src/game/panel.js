@@ -60,7 +60,9 @@ panel.exp = {
 }
 panel.slot1 = {
   left: 495,
-  top: 568
+  top: 568,
+  width: 30,
+  height: 30
 }
 panel.draw = function (ctx) {
   // draw low panel

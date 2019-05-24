@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <canvas @click="click()" ref="my-canvas" class="canvas" ></canvas>
+    <canvas @mousemove="move($event)" @click="click()" @mousedown="holdOn()" @mouseup="holdOff()" ref="my-canvas" class="canvas" ></canvas>
   </div>
 </template>
 
@@ -17,7 +17,7 @@ export default {
     this.$refs['my-canvas'].width = 1200
     this.$refs['my-canvas'].height = 600
     this.ctx = this.$refs['my-canvas'].getContext('2d')
-    game.main(this.ctx)
+    game.main(this.ctx, mouse)
   },
   methods: {
     click () {
@@ -26,6 +26,18 @@ export default {
       mouse.pageY = event.pageY
       mouse.pageX = event.pageX
       game.event(mouse, this.ctx)
+    },
+    move ($event) {
+      mouse.otop = this.$refs['my-canvas'].offsetTop
+      mouse.oleft = this.$refs['my-canvas'].offsetLeft
+      mouse.pageY = event.pageY
+      mouse.pageX = event.pageX
+    },
+    holdOn () {
+      game.stickyItem(mouse)
+    },
+    holdOff () {
+      game.moveItem = false
     }
   }
 }

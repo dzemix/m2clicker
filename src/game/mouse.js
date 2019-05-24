@@ -17,6 +17,9 @@ var mouse = {
       mouse.left() < obj.left + obj.width) {
       return true
     }
+  },
+  button: function () {
+    console.log(event.button)
   }
 }
 

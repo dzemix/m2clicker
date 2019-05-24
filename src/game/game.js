@@ -1,7 +1,10 @@
 import panel from './panel'
 import data from './data'
 import draw from './draw'
+import mouse from './mouse'
 var game = {}
+game.interval = ''
+game.moveItem = ''
 game.mob = {
   left: 525,
   top: 350,
@@ -23,7 +26,7 @@ game.mobHp = {
   height: 10,
   color: 'red'
 }
-game.main = function (ctx) {
+game.main = function (ctx, mouse) {
   let img = new Image()
   img.src = '/static/back.jpg'
   // draw
@@ -31,6 +34,7 @@ game.main = function (ctx) {
     ctx.drawImage(img, 0, 0)
     this.drawMob(ctx)
     panel.draw(ctx)
+    this.move(mouse, ctx)
   }, 40)
   // mob hits
   setInterval(() => {
@@ -105,5 +109,17 @@ game.keyListener = function () {
       }
     }
   })
+}
+game.move = function (mouse, ctx) {
+  var potion = new Image()
+  potion.src = '/static/redPotion.png'
+  if (this.moveItem) {
+    ctx.drawImage(potion, mouse.left() - 10, mouse.top() - 10)
+  }  
+}
+game.stickyItem = function (mouse) {
+  if (mouse.isOn(panel.slot1)) {
+    this.moveItem = true
+  }
 }
 export default game
