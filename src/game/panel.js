@@ -1,6 +1,7 @@
 import data from './data'
 import draw from './draw'
-import assets from './assets'
+import assets from './panel/assets'
+
 var panel = {}
 panel.interaction = {
   inventory: false

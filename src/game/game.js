@@ -1,7 +1,7 @@
 import panel from './panel'
 import data from './data'
 import draw from './draw'
-import assets from './assets'
+import assets from './panel/assets'
 var game = {}
 game.interval = ''
 game.moveItem = ''
