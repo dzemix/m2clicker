@@ -1,7 +1,6 @@
 import data from './data'
 import draw from './draw'
 import assets from './panel/assets'
-
 var panel = {}
 panel.interaction = {
   inventory: false
@@ -32,10 +31,10 @@ panel.draw = function (ctx) {
   // draw hp
   assets.hp.width = data.stats.hp
   draw.square(ctx, assets.hp)
-  // draw red potion
-  draw.item(ctx, panel.slot1)
-  // draw blue potion
-  draw.item(ctx, panel.slot2)
+  // draw slots
+
+  draw.slots(ctx)
+
   // draw inv button
   draw.square(ctx, assets.interface.invButton)
   // if inventory true draw inventory
