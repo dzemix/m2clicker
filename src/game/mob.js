@@ -25,17 +25,18 @@ mob.mobHp = {
 }
 mob.drawMob = function (ctx) {
   // draw mob and mob underHp
-  let src = mobProto[0].src
+  let src = mobProto[data.lvl].src
   draw.image(ctx, src, mob.mob.left, mob.mob.top)
   draw.square(ctx, mob.mobUnderHp)
   // draw mob hp
+
   mob.mobHp.width = mob.mob.width * data.mob.percent()
   draw.square(ctx, mob.mobHp)
 }
 mob.hits = function () {
   if (!data.status.over) {
     if (data.stats.hp > 0) {
-      data.stats.hp -= mobProto[0].dmg
+      data.stats.hp -= mobProto[data.lvl].dmg
     }
   }
   if (data.stats.hp <= 0) {
@@ -44,4 +45,5 @@ mob.hits = function () {
     data.status.overText = 'You Lose'
   }
 }
+
 export default mob

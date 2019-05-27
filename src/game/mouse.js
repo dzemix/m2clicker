@@ -5,6 +5,7 @@ import mob from './mob'
 import assets from './panel/assets'
 import data from './data'
 import panel from './panel'
+import mobProto from './mobProto'
 var mouse = {
   pageX: null,
   pageY: null,
@@ -76,7 +77,7 @@ mouse.event = function () {
     }
     if (data.mob.hp <= 0) {
       if (data.stats.exp < 100) {
-        data.stats.exp += 20
+        data.stats.exp += mobProto[data.lvl].exp
         data.mob.hp = data.mob.maxHp
       } else {
         data.status.over = true
@@ -102,7 +103,24 @@ mouse.event = function () {
     data.status.over = false
     data.stats.hp = 95
     data.stats.exp = 0
-    data.mob.hp = 150
+    data.mob.hp = data.mob.maxHp
+  }
+  // title buttons
+  if (mouse.isOn(panel.leftButton)) {
+    if (data.lvl > 0) {
+      data.lvl--
+      data.atak = false
+      data.mob.maxHp = mobProto[data.lvl].hp
+      data.mob.hp = data.mob.maxHp
+    }
+  }
+  if (mouse.isOn(panel.rightButton)) {
+    if (data.lvl < data.maxlvl) {
+      data.lvl++
+      data.mob.maxHp = mobProto[data.lvl].hp
+      data.mob.hp = data.mob.maxHp
+      data.atak = false
+    }
   }
 }
 export default mouse

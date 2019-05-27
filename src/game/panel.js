@@ -1,23 +1,31 @@
 import data from './data'
 import draw from './draw'
 import assets from './panel/assets'
+import mobProto from './mobProto'
 var panel = {}
 panel.interaction = {
   inventory: false
 }
-panel.slot1 = {
-  itemId: 0,
-  left: 495,
-  top: 568,
-  width: 25,
-  height: 25
+panel.titleBar = {
+  left: 500,
+  top: 40,
+  width: 200,
+  height: 50,
+  color: 'grey'
 }
-panel.slot2 = {
-  itemId: 1,
-  left: 526,
-  top: 568,
-  width: 25,
-  height: 25
+panel.leftButton = {
+  left: panel.titleBar.left - 60,
+  top: panel.titleBar.top,
+  width: 50,
+  height: 50,
+  color: 'red'
+}
+panel.rightButton = {
+  left: panel.titleBar.left + 210,
+  top: panel.titleBar.top,
+  width: 50,
+  height: 50,
+  color: 'yellow'
 }
 panel.draw = function (ctx) {
   // draw low panel
@@ -44,6 +52,17 @@ panel.draw = function (ctx) {
       assets.interface.inventory.left,
       assets.interface.inventory.top)
   }
+  // draw title bar !!!
+  draw.square(ctx, panel.titleBar)
+  // draw left and right button
+  draw.square(ctx, panel.leftButton)
+  draw.square(ctx, panel.rightButton)
+
+  ctx.font = '20px Georgia'
+  ctx.fillStyle = 'yellow'
+  let text = mobProto[data.lvl].name
+  ctx.fillText(text, 530, 70)
+
   // if game is over draw restart button and text
   if (data.status.over) {
     ctx.font = '40px Georgia'
