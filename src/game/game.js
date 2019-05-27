@@ -36,7 +36,7 @@ game.main = function (ctx, mouse) {
     this.drawMob(ctx)
     panel.draw(ctx)
     this.move(mouse, ctx)
-  }, 40)
+  }, 20)
   // mob hits
   setInterval(() => {
     if (!data.status.over) {
@@ -97,14 +97,23 @@ game.event = function (mouse, ctx) {
     data.mob.hp = 150
   }
 }
+// key listener
 game.keyListener = function () {
   document.addEventListener('keyup', function (evt) {
-    if (evt.keyCode === 49) {
-      if (data.stats.hp <= 90) {
-        data.stats.hp += 10
-        console.log(data.stats.hp)
-      } else {
-        data.stats.hp = 95
+    var keys = ['1', '2', '3', '4', '5', '6', '7', '8']
+    let i = 0
+    for (i; i < keys.length; i++) {
+      if (evt.key === keys[i]) {
+        if (slots[evt.key - 1].itemId === 0) {
+          if (!data.status.over) {
+            if (data.stats.hp <= 90) {
+              data.stats.hp += 10
+              console.log(data.stats.hp)
+            } else {
+              data.stats.hp = 95
+            }
+          }
+        }
       }
     }
   })
