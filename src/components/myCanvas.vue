@@ -37,7 +37,7 @@ export default {
       game.stickyItem(mouse)
     },
     holdOff () {
-      game.moveItem = false
+      game.dropItem(mouse)
     }
   }
 }

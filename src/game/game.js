@@ -2,9 +2,12 @@ import panel from './panel'
 import data from './data'
 import draw from './draw'
 import assets from './panel/assets'
+import slots from './panel/slots'
+import item from './item'
 var game = {}
 game.interval = ''
-game.moveItem = ''
+game.moveItem = null
+game.beforeSlot = null
 game.mob = {
   left: 525,
   top: 350,
@@ -106,24 +109,46 @@ game.keyListener = function () {
     }
   })
 }
+
+// mouse move event
+
 game.move = function (mouse, ctx) {
-  var potion = new Image()
-  potion.src = '/static/redPotion.png'
-  var potion2 = new Image()
-  potion2.src = '/static/bluePotion.png'
-  if (this.moveItem === 1) {
-    ctx.drawImage(potion, mouse.left() - 10, mouse.top() - 10)
-  }
-  if (this.moveItem === 2) {
-    ctx.drawImage(potion2, mouse.left() - 10, mouse.top() - 10)
+  if (this.moveItem !== null && this.moveItem !== false) {
+    let src = item[this.moveItem].src
+    draw.image(ctx, src, mouse.left() - 10, mouse.top() - 10)
   }
 }
 game.stickyItem = function (mouse) {
-  if (mouse.isOn(panel.slot1)) {
-    this.moveItem = 1
+  let e = 0
+  for (e; e < slots.length; e++) {
+    if (mouse.isOn(slots[e])) {
+      if (slots[e].itemId !== null) {
+        this.moveItem = slots[e].itemId
+        this.beforeSlot = e
+      }
+    }
   }
-  if (mouse.isOn(panel.slot2)) {
-    this.moveItem = 2
+}
+game.dropItem = function (mouse) {
+  if (this.moveItem !== null) {
+    let i = 0
+    let validation = false
+    for (i; i < slots.length; i++) {
+      if (mouse.isOn(slots[i])) {
+        if (slots[i].itemId !== null) {
+          slots[this.beforeSlot].itemId = slots[i].itemId
+        } else {
+          slots[this.beforeSlot].itemId = null
+        }
+        slots[i].itemId = this.moveItem
+        validation = true
+      }
+      if (validation === false && i === 7) {
+        slots[this.beforeSlot].itemId = null
+      }
+    }
+    this.moveItem = null
+    this.beforeSlot = null
   }
 }
 export default game
