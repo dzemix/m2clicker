@@ -70,7 +70,8 @@ mouse.event = function () {
   if (mouse.isOn(mob.mob)) {
     if (!data.status.over) {
       if (data.mob.hp > 0) {
-        data.mob.hp -= 10
+        data.atak = true
+        data.mob.hp -= data.dmg
       }
     }
     if (data.mob.hp <= 0) {
@@ -79,6 +80,7 @@ mouse.event = function () {
         data.mob.hp = data.mob.maxHp
       } else {
         data.status.over = true
+        data.atak = false
         data.status.overText = 'You Win'
         data.stats.exp = 0
       }

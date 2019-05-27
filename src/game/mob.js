@@ -1,5 +1,6 @@
 import draw from './draw'
 import data from './data'
+import mobProto from './mobProto'
 var mob = {}
 mob.mob = {
   left: 525,
@@ -24,10 +25,23 @@ mob.mobHp = {
 }
 mob.drawMob = function (ctx) {
   // draw mob and mob underHp
-  draw.image(ctx, '/static/dog.png', mob.mob.left, mob.mob.top)
+  let src = mobProto[0].src
+  draw.image(ctx, src, mob.mob.left, mob.mob.top)
   draw.square(ctx, mob.mobUnderHp)
   // draw mob hp
   mob.mobHp.width = mob.mob.width * data.mob.percent()
   draw.square(ctx, mob.mobHp)
+}
+mob.hits = function () {
+  if (!data.status.over) {
+    if (data.stats.hp > 0) {
+      data.stats.hp -= mobProto[0].dmg
+    }
+  }
+  if (data.stats.hp <= 0) {
+    data.status.over = true
+    data.atak = false
+    data.status.overText = 'You Lose'
+  }
 }
 export default mob

@@ -1,14 +1,17 @@
 var data = {}
 data.moveItem = null
 data.beforeSlot = null
+data.atak = false
 data.status = {
   over: false,
   overText: ''
 }
 data.stats = {
-  hp: 60,
-  exp: 0
+  hp: 90,
+  exp: 0,
+  BaseDmg: 10
 }
+data.dmg = data.stats.BaseDmg + 5
 data.mob = {}
 data.mob.maxHp = 150
 data.mob.hp = data.mob.maxHp
