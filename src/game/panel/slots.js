@@ -15,7 +15,7 @@ slots = [
     height: 25
   },
   {
-    itemId: 1,
+    itemId: 2,
     left: 557,
     top: 568,
     width: 25,
