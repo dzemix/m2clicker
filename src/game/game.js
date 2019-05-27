@@ -4,6 +4,7 @@ import draw from './draw'
 import assets from './panel/assets'
 import slots from './panel/slots'
 import item from './item'
+import keyboard from './keyboard'
 var game = {}
 game.interval = ''
 game.moveItem = null
@@ -49,7 +50,8 @@ game.main = function (ctx, mouse) {
       data.status.overText = 'You Lose'
     }
   }, 100)
-  this.keyListener()
+  // key listener
+  keyboard.keyListener()
 }
 game.drawMob = function (ctx) {
   // draw mob and mob underHp
@@ -97,35 +99,6 @@ game.event = function (mouse, ctx) {
     data.mob.hp = 150
   }
 }
-// key listener
-game.keyListener = function () {
-  document.addEventListener('keyup', function (evt) {
-    var keys = ['1', '2', '3', '4', '5', '6', '7', '8',]
-    let i = 0
-    for (i; i < keys.length; i++) {
-      if (evt.key === keys[i]) {
-        if (slots[evt.key - 1].itemId === 0) {
-          if (!data.status.over) {
-            if (data.stats.hp <= 90) {
-              data.stats.hp += 10
-              console.log(data.stats.hp)
-            } else {
-              data.stats.hp = 95
-            }
-          }
-        }
-      }
-    }
-    if (evt.key === 'i') {
-      if (panel.interaction.inventory === false) {
-        panel.interaction.inventory = true
-      } else {
-        panel.interaction.inventory = false
-      }
-    }
-  })
-}
-
 // mouse move event
 
 game.move = function (mouse, ctx) {
