@@ -25,7 +25,7 @@ export default {
       mouse.oleft = this.$refs['my-canvas'].offsetLeft
       mouse.pageY = event.pageY
       mouse.pageX = event.pageX
-      game.event(mouse, this.ctx)
+      mouse.event()
     },
     move ($event) {
       mouse.otop = this.$refs['my-canvas'].offsetTop

@@ -1,4 +1,6 @@
 var data = {}
+data.moveItem = null
+data.beforeSlot = null
 data.status = {
   over: false,
   overText: ''
