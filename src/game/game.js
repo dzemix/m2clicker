@@ -100,7 +100,7 @@ game.event = function (mouse, ctx) {
 // key listener
 game.keyListener = function () {
   document.addEventListener('keyup', function (evt) {
-    var keys = ['1', '2', '3', '4', '5', '6', '7', '8']
+    var keys = ['1', '2', '3', '4', '5', '6', '7', '8',]
     let i = 0
     for (i; i < keys.length; i++) {
       if (evt.key === keys[i]) {
@@ -114,6 +114,13 @@ game.keyListener = function () {
             }
           }
         }
+      }
+    }
+    if (evt.key === 'i') {
+      if (panel.interaction.inventory === false) {
+        panel.interaction.inventory = true
+      } else {
+        panel.interaction.inventory = false
       }
     }
   })
