@@ -2,8 +2,6 @@ import panel from './panel'
 import data from './data'
 import draw from './draw'
 import assets from './panel/assets'
-import slots from './panel/slots'
-import item from './item'
 import keyboard from './keyboard'
 var game = {}
 game.interval = ''
@@ -36,7 +34,7 @@ game.main = function (ctx, mouse) {
     draw.image(ctx, '/static/back.jpg', 0, 0)
     this.drawMob(ctx)
     panel.draw(ctx)
-    this.move(mouse, ctx)
+    mouse.move(ctx)
   }, 20)
   // mob hits
   setInterval(() => {
@@ -97,47 +95,6 @@ game.event = function (mouse, ctx) {
     data.stats.hp = 95
     data.stats.exp = 0
     data.mob.hp = 150
-  }
-}
-// mouse move event
-
-game.move = function (mouse, ctx) {
-  if (this.moveItem !== null && this.moveItem !== false) {
-    let src = item[this.moveItem].src
-    draw.image(ctx, src, mouse.left() - 10, mouse.top() - 10)
-  }
-}
-game.stickyItem = function (mouse) {
-  let e = 0
-  for (e; e < slots.length; e++) {
-    if (mouse.isOn(slots[e])) {
-      if (slots[e].itemId !== null) {
-        this.moveItem = slots[e].itemId
-        this.beforeSlot = e
-      }
-    }
-  }
-}
-game.dropItem = function (mouse) {
-  if (this.moveItem !== null) {
-    let i = 0
-    let validation = false
-    for (i; i < slots.length; i++) {
-      if (mouse.isOn(slots[i])) {
-        if (slots[i].itemId !== null) {
-          slots[this.beforeSlot].itemId = slots[i].itemId
-        } else {
-          slots[this.beforeSlot].itemId = null
-        }
-        slots[i].itemId = this.moveItem
-        validation = true
-      }
-      if (validation === false && i === 7) {
-        slots[this.beforeSlot].itemId = null
-      }
-    }
-    this.moveItem = null
-    this.beforeSlot = null
   }
 }
 export default game

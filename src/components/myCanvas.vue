@@ -34,10 +34,10 @@ export default {
       mouse.pageX = event.pageX
     },
     holdOn () {
-      game.stickyItem(mouse)
+      mouse.stickyItem()
     },
     holdOff () {
-      game.dropItem(mouse)
+      mouse.dropItem()
     }
   }
 }
