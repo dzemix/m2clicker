@@ -51,6 +51,7 @@ panel.draw = function (ctx) {
       '/static/inventory.png',
       assets.interface.inventory.left,
       assets.interface.inventory.top)
+    panel.inventory(ctx)
   }
   // draw title bar !!!
   draw.square(ctx, panel.titleBar)
@@ -74,5 +75,8 @@ panel.draw = function (ctx) {
     ctx.fillText('restart', assets.interface.restart.left + 20,
       assets.interface.restart.top + 30)
   }
+}
+panel.inventory = function (ctx) {
+  console.log('inventory')
 }
 export default panel

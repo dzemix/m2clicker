@@ -1,7 +1,7 @@
 var slots = []
 slots = [
   {
-    itemId: 0,
+    itemId: 3,
     left: 495,
     top: 568,
     width: 25,

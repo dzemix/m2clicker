@@ -1,18 +1,23 @@
 var item = [
   {
-    id: 0,
     title: 'red potion',
-    src: '/static/redPotion.png'
+    src: '/static/redPotion.png',
+    slots: 1
   },
   {
-    id: 1,
     title: 'blue potion',
-    src: '/static/bluePotion.png'
+    src: '/static/bluePotion.png',
+    slots: 1
   },
   {
-    id: 2,
     title: 'green potion',
-    src: '/static/greenPotion.png'
+    src: '/static/greenPotion.png',
+    slots: 1
+  },
+  {
+    title: 'sword',
+    src: '/static/sword.png',
+    slots: 2
   }
 ]
 
