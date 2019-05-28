@@ -80,15 +80,12 @@ panel.draw = function (ctx) {
 panel.inventory = function (ctx) {
   let left = assets.inventory.left
   let top = assets.inventory.top
-  let i = 0
-  for (i; i < 5; i++) {
-    let e = 0
-    for (e; e < 9; e++) {
-      let value = inventory[i][e]
-      if (value) {
-        draw.item(ctx, {itemId: value, left, top})
+
+  for (let i in inventory) {
+    for (let e in inventory[i]) {
+      if (inventory[i][e]) {
+        draw.item(ctx, {itemId: inventory[i][e], left, top})
       }
-      // draw.square(ctx, {left, top, width, height})
       top += 29
     }
     top = assets.inventory.top
