@@ -3,7 +3,6 @@ import draw from './draw'
 import assets from './panel/assets'
 import mobProto from './mobProto'
 import inventory from './inventory'
-import item from './item'
 var panel = {}
 panel.interaction = {
   inventory: false
@@ -81,8 +80,6 @@ panel.draw = function (ctx) {
 panel.inventory = function (ctx) {
   let left = assets.inventory.left
   let top = assets.inventory.top
-  let width = assets.inventory.width
-  let height = assets.inventory.height
   let i = 0
   for (i; i < 5; i++) {
     let e = 0
