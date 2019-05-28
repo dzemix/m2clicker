@@ -26,6 +26,5 @@ game.main = function (ctx, mouse) {
 
   // inventory first step
   inventory[0][0] = 3
-  console.log(inventory)
 }
 export default game

@@ -55,10 +55,10 @@ assets.exp = {
   color: 'yellow'
 }
 assets.inventory = {
-  left: assets.interface.inventory.left + 7,
-  top: assets.interface.inventory.top + 239,
-  width: 26,
-  height: 26,
+  left: assets.interface.inventory.left + 3,
+  top: assets.interface.inventory.top + 235,
+  width: 25,
+  height: 25,
   color: 'blue'
 }
 export default assets

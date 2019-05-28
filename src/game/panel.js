@@ -2,6 +2,8 @@ import data from './data'
 import draw from './draw'
 import assets from './panel/assets'
 import mobProto from './mobProto'
+import inventory from './inventory'
+import item from './item'
 var panel = {}
 panel.interaction = {
   inventory: false
@@ -82,14 +84,18 @@ panel.inventory = function (ctx) {
   let width = assets.inventory.width
   let height = assets.inventory.height
   let i = 0
-  for (i; i < 9; i++) {
+  for (i; i < 5; i++) {
     let e = 0
-    for (e; e < 5; e++) {
-      draw.square(ctx, {left, top, width, height})
-      left += 29
+    for (e; e < 9; e++) {
+      let value = inventory[i][e]
+      if (value) {
+        draw.item(ctx, {itemId: value, left, top})
+      }
+      // draw.square(ctx, {left, top, width, height})
+      top += 29
     }
-    left = assets.inventory.left
-    top += 29
+    top = assets.inventory.top
+    left += 29
   }
 }
 export default panel
