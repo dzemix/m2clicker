@@ -77,6 +77,19 @@ panel.draw = function (ctx) {
   }
 }
 panel.inventory = function (ctx) {
-  console.log('inventory')
+  let left = assets.inventory.left
+  let top = assets.inventory.top
+  let width = assets.inventory.width
+  let height = assets.inventory.height
+  let i = 0
+  for (i; i < 9; i++) {
+    let e = 0
+    for (e; e < 5; e++) {
+      draw.square(ctx, {left, top, width, height})
+      left += 29
+    }
+    left = assets.inventory.left
+    top += 29
+  }
 }
 export default panel

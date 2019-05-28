@@ -1,6 +1,6 @@
 import data from '../data'
-var index = {}
-index.interface = {
+var assets = {}
+assets.interface = {
   restart: {
     left: 550,
     top: 210,
@@ -33,25 +33,32 @@ index.interface = {
     }
   }
 }
-index.hp = {
+assets.hp = {
   left: 74,
-  top: index.interface.lowPanel.top + 20,
+  top: assets.interface.lowPanel.top + 20,
   width: data.stats.hp,
   height: 8,
   color: 'red'
 }
-index.underExp = {
+assets.underExp = {
   left: 175,
   top: 570,
   width: 200,
   height: 30,
   color: 'black'
 }
-index.exp = {
+assets.exp = {
   left: 177,
-  top: index.interface.lowPanel.top + 22,
+  top: assets.interface.lowPanel.top + 22,
   width: data.stats.exp,
   height: 23,
   color: 'yellow'
 }
-export default index
+assets.inventory = {
+  left: assets.interface.inventory.left + 7,
+  top: assets.interface.inventory.top + 239,
+  width: 26,
+  height: 26,
+  color: 'blue'
+}
+export default assets
