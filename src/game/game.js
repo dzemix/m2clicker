@@ -4,7 +4,6 @@ import maps from './maps'
 import mob from './mob'
 import data from './data'
 import mobProto from './mobProto'
-import inventory from './inventory'
 var game = {}
 game.main = function (ctx, mouse) {
   // draw
@@ -25,6 +24,5 @@ game.main = function (ctx, mouse) {
   keyboard.keyListener()
 
   // inventory first step
-  inventory[0][0] = 3
 }
 export default game

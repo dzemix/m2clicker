@@ -134,9 +134,13 @@ mouse.event = function () {
       let second = Math.floor(top / 29)
       if (inventory[first][second] === null) {
         if (item[inventory[first][second - 1]]) {
-          if (item[inventory[first][second - 1]].slots == 2) {
+          if (item[inventory[first][second - 1]].slots > 1) {
             console.log(inventory[first][second - 1])
-          }          
+          }
+        } else if (item[inventory[first][second - 2]]) {
+          if (item[inventory[first][second - 2]].slots === 3) {
+            console.log(inventory[first][second - 2])
+          }
         }
       } else {
         console.log(inventory[first][second])

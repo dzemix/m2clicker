@@ -18,6 +18,11 @@ var item = [
     title: 'sword',
     src: '/static/sword.png',
     slots: 2
+  },
+  {
+    title: 'glewia',
+    src: '/static/glaive.png',
+    slots: 3
   }
 ]
 

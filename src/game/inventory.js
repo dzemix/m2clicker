@@ -1,6 +1,6 @@
 var inventory = [
   [
-    3,
+    4,
     null,
     null,
     null,
@@ -13,7 +13,7 @@ var inventory = [
   [
     3,
     null,
-    null,
+    4,
     null,
     null,
     null,
