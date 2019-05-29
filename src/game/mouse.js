@@ -36,33 +36,55 @@ mouse.move = function (ctx) {
   }
 }
 mouse.stickyItem = function () {
-  let e = 0
-  for (e; e < slots.length; e++) {
-    if (mouse.isOn(slots[e])) {
-      if (slots[e].itemId !== null) {
-        data.moveItem = slots[e].itemId
-        data.beforeSlot = e
+  if (mouse.isOn(assets.slotsBar)) {
+    for (let e in slots) {
+      if (mouse.isOn(slots[e])) {
+        if (slots[e].itemId !== null) {
+          data.moveItem = slots[e].itemId
+          data.beforeSlot = e
+        }
       }
-    }
+    }    
   }
+  // if (panel.interaction.inventory) {
+  //   if (mouse.isOn(assets.inventory)) {
+  //     let left = mouse.left() - assets.inventory.left
+  //     let top = mouse.top() - assets.inventory.top
+  //     let first = Math.floor(left / 29)
+  //     let second = Math.floor(top / 29)
+  //     if (inventory[first][second] === null) {
+  //       if (item[inventory[first][second - 1]]) {
+  //         if (item[inventory[first][second - 1]].slots > 1) {
+  //           console.log(inventory[first][second - 1])
+  //         }
+  //       } else if (item[inventory[first][second - 2]]) {
+  //         if (item[inventory[first][second - 2]].slots === 3) {
+  //           console.log(inventory[first][second - 2])
+  //         }
+  //       }
+  //     } else {
+  //       // console.log(inventory[first][second])
+  //       data.moveItem = inventory[first][second]
+  //       data.beforeSlot = 1
+  //     }
+  //   }
+  // }
 }
 mouse.dropItem = function () {
   if (data.moveItem !== null) {
-    let i = 0
-    let validation = false
-    for (i; i < slots.length; i++) {
-      if (mouse.isOn(slots[i])) {
-        if (slots[i].itemId !== null) {
-          slots[data.beforeSlot].itemId = slots[i].itemId
-        } else {
-          slots[data.beforeSlot].itemId = null
+    if (mouse.isOn(assets.slotsBar)) {
+      for (let i in slots) {
+        if (mouse.isOn(slots[i])) {
+          if (slots[i].itemId !== null) {
+            slots[data.beforeSlot].itemId = slots[i].itemId
+          } else {
+            slots[data.beforeSlot].itemId = null
+          }
+          slots[i].itemId = data.moveItem
         }
-        slots[i].itemId = data.moveItem
-        validation = true
       }
-      if (validation === false && i === 7) {
-        slots[data.beforeSlot].itemId = null
-      }
+    } else {
+      slots[data.beforeSlot].itemId = null
     }
     data.moveItem = null
     data.beforeSlot = null
@@ -126,26 +148,26 @@ mouse.event = function () {
     }
   }
   // inventory event
-  if (panel.interaction.inventory) {
-    if (mouse.isOn(assets.inventory)) {
-      let left = mouse.left() - assets.inventory.left
-      let top = mouse.top() - assets.inventory.top
-      let first = Math.floor(left / 29)
-      let second = Math.floor(top / 29)
-      if (inventory[first][second] === null) {
-        if (item[inventory[first][second - 1]]) {
-          if (item[inventory[first][second - 1]].slots > 1) {
-            console.log(inventory[first][second - 1])
-          }
-        } else if (item[inventory[first][second - 2]]) {
-          if (item[inventory[first][second - 2]].slots === 3) {
-            console.log(inventory[first][second - 2])
-          }
-        }
-      } else {
-        console.log(inventory[first][second])
-      }
-    }
-  }
+  // if (panel.interaction.inventory) {
+  //   if (mouse.isOn(assets.inventory)) {
+  //     let left = mouse.left() - assets.inventory.left
+  //     let top = mouse.top() - assets.inventory.top
+  //     let first = Math.floor(left / 29)
+  //     let second = Math.floor(top / 29)
+  //     if (inventory[first][second] === null) {
+  //       if (item[inventory[first][second - 1]]) {
+  //         if (item[inventory[first][second - 1]].slots > 1) {
+  //           console.log(inventory[first][second - 1])
+  //         }
+  //       } else if (item[inventory[first][second - 2]]) {
+  //         if (item[inventory[first][second - 2]].slots === 3) {
+  //           console.log(inventory[first][second - 2])
+  //         }
+  //       }
+  //     } else {
+  //       console.log(inventory[first][second])
+  //     }
+  //   }
+  // }
 }
 export default mouse

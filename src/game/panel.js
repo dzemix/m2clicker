@@ -64,7 +64,6 @@ panel.draw = function (ctx) {
   ctx.fillStyle = 'yellow'
   let text = mobProto[data.lvl].name
   ctx.fillText(text, 530, 70)
-
   // if game is over draw restart button and text
   if (data.status.over) {
     ctx.font = '40px Georgia'

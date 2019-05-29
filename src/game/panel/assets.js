@@ -69,4 +69,10 @@ assets.slot = {
   height: 25,
   color: 'blue'
 }
+assets.slotsBar = {
+  left: 490,
+  top: 565,
+  width: 300,
+  height: 40,
+  color: 'red'}
 export default assets
