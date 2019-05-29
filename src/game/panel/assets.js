@@ -25,6 +25,8 @@ assets.interface = {
   inventory: {
     left: 1050,
     top: 37,
+    width: 150,
+    height: 520,
     closeButton: {
       left: 1170,
       top: 37,
@@ -55,6 +57,12 @@ assets.exp = {
   color: 'yellow'
 }
 assets.inventory = {
+  left: assets.interface.inventory.left + 3,
+  top: assets.interface.inventory.top + 235,
+  width: 145,
+  height: 265
+}
+assets.slot = {
   left: assets.interface.inventory.left + 3,
   top: assets.interface.inventory.top + 235,
   width: 25,

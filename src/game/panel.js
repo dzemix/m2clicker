@@ -78,9 +78,8 @@ panel.draw = function (ctx) {
   }
 }
 panel.inventory = function (ctx) {
-  let left = assets.inventory.left
-  let top = assets.inventory.top
-
+  let left = assets.slot.left
+  let top = assets.slot.top
   for (let i in inventory) {
     for (let e in inventory[i]) {
       if (inventory[i][e]) {
@@ -88,7 +87,7 @@ panel.inventory = function (ctx) {
       }
       top += 29
     }
-    top = assets.inventory.top
+    top = assets.slot.top
     left += 29
   }
 }

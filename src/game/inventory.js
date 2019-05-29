@@ -1,28 +1,17 @@
 var inventory = [
   [
-    null,
+    3,
     null,
     null,
     null,
     null,
     3,
     null,
-    null,
+    3,
     null
   ],
   [
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null
-  ],
-  [
-    null,
+    3,
     null,
     null,
     null,
@@ -33,7 +22,18 @@ var inventory = [
     null
   ],
   [
+    3,
     null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  ],
+  [
+    3,
     null,
     null,
     null,
@@ -44,7 +44,7 @@ var inventory = [
     null
   ],
   [
-    null,
+    3,
     null,
     null,
     null,

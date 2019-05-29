@@ -6,6 +6,7 @@ import assets from './panel/assets'
 import data from './data'
 import panel from './panel'
 import mobProto from './mobProto'
+import inventory from './inventory'
 var mouse = {
   pageX: null,
   pageY: null,
@@ -68,6 +69,7 @@ mouse.dropItem = function () {
   }
 }
 mouse.event = function () {
+  // mob atak
   if (mouse.isOn(mob.mob)) {
     if (!data.status.over) {
       if (data.mob.hp > 0) {
@@ -87,8 +89,8 @@ mouse.event = function () {
       }
     }
   }
+  // open inventory
   if (mouse.isOn(assets.interface.invButton)) {
-    console.log('invbutton')
     if (panel.interaction.inventory) {
       panel.interaction.inventory = false
     } else {
@@ -98,6 +100,7 @@ mouse.event = function () {
   if (mouse.isOn(assets.interface.inventory.closeButton)) {
     panel.interaction.inventory = false
   }
+  // restart
   if (mouse.isOn(assets.interface.restart) && data.status.over) {
     console.log('restart')
     data.status.over = false
@@ -120,6 +123,24 @@ mouse.event = function () {
       data.mob.maxHp = mobProto[data.lvl].hp
       data.mob.hp = data.mob.maxHp
       data.atak = false
+    }
+  }
+  // inventory event
+  if (panel.interaction.inventory) {
+    if (mouse.isOn(assets.inventory)) {
+      let left = mouse.left() - assets.inventory.left
+      let top = mouse.top() - assets.inventory.top
+      let first = Math.floor(left / 29)
+      let second = Math.floor(top / 29)
+      if (inventory[first][second] === null) {
+        if (item[inventory[first][second - 1]]) {
+          if (item[inventory[first][second - 1]].slots == 2) {
+            console.log(inventory[first][second - 1])
+          }          
+        }
+      } else {
+        console.log(inventory[first][second])
+      }
     }
   }
 }
