@@ -4,6 +4,7 @@ data.lvl = 0
 data.maxlvl = 1
 data.moveItem = null
 data.beforeSlot = null
+data.beforeInventory = null
 data.atak = false
 data.status = {
   over: false,
