@@ -104,7 +104,9 @@ panel.inventory = function (ctx) {
   for (let i in inventory) {
     for (let e in inventory[i]) {
       if (inventory[i][e]) {
-        draw.item(ctx, {itemId: inventory[i][e], left, top})
+        if (inventory[i][e].slot === 1) {
+          draw.item(ctx, {itemId: inventory[i][e].itemId, left, top})
+        }
       }
       top += 29
     }

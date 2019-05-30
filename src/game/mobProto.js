@@ -9,7 +9,7 @@ var mobProto = [
     drops: [
       {
         itemId: 3,
-        chance: 60
+        chance: 100
       }
     ]
   },

@@ -1,31 +1,21 @@
 var inventory = [
   [
-    4,
-    null,
-    null,
-    null,
-    null,
-    3,
-    null,
-    3,
-    null
-  ],
-  [
-    3,
-    null,
-    4,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null
-  ],
-  [
-    3,
-    null,
-    null,
-    null,
+    {
+      itemId: 3,
+      slot: 1
+    },
+    {
+      itemId: 3,
+      slot: 2
+    },
+    {
+      itemId: 1,
+      slot: 1
+    },
+    {
+      itemId: 1,
+      slot: 1
+    },
     null,
     null,
     null,
@@ -33,18 +23,40 @@ var inventory = [
     null
   ],
   [
-    3,
     null,
     null,
     null,
     null,
-    1,
+    null,
+    null,
     null,
     null,
     null
   ],
   [
-    3,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  ],
+  [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  ],
+  [
+    null,
     null,
     null,
     null,

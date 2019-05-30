@@ -52,20 +52,8 @@ mouse.stickyItem = function () {
       let top = mouse.top() - assets.inventory.top
       let first = Math.floor(left / 29)
       let second = Math.floor(top / 29)
-      if (inventory[first][second] === null) {
-        if (item[inventory[first][second - 1]]) {
-          if (item[inventory[first][second - 1]].slots > 1) {
-            data.moveItem = inventory[first][second - 1]
-            data.beforeInventory = {first: first, second: second - 1}
-          }
-        } else if (item[inventory[first][second - 2]]) {
-          if (item[inventory[first][second - 2]].slots === 3) {
-            data.moveItem = inventory[first][second - 2]
-            data.beforeInventory = {first: first, second: second - 2}
-          }
-        }
-      } else {
-        data.moveItem = inventory[first][second]
+      if (inventory[first][second]) {
+        data.moveItem = inventory[first][second].itemId
         data.beforeInventory = {first: first, second: second}
       }
     }
@@ -103,62 +91,18 @@ mouse.dropItem = function () {
     } else if (mouse.isOn(assets.inventory)) {
       let left = mouse.left() - assets.inventory.left
       let top = mouse.top() - assets.inventory.top
-      let first = Math.floor(left / 29)
-      let second = Math.floor(top / 29)
-
-      if (!inventory[first][second]) {
-        if (inventory[first][second - 2]) {
-          if (item[inventory[first][second - 2]].slots !== 3) {
-            if (item[data.moveItem].slots === 2) {
-              if (!(inventory[first][second + 1])) {
-                inventory[first][second] = data.moveItem
-                inventory[data.beforeInventory.first][data.beforeInventory.second] = null
-              }
-            } else if (item[data.moveItem].slots === 3) {
-              if (!inventory[first][second + 2]) {
-                inventory[first][second] = data.moveItem
-                inventory[data.beforeInventory.first][data.beforeInventory.second] = null
-              }
-            } else {
-              inventory[first][second] = data.moveItem
-              inventory[data.beforeInventory.first][data.beforeInventory.second] = null
-            }
+      let i = Math.floor(left / 29)
+      let e = Math.floor(top / 29)
+      if (!inventory[i][e]) {
+        if (e + item[data.moveItem].slots - 1 < 9) {
+          for (let t = 0; t < item[data.moveItem].slots; t++) {
+            inventory[i][e + t] = {itemId: data.moveItem, slot: t + 1}
           }
-        } else if (inventory[first][second - 1]) {
-          if (!(item[inventory[first][second - 1]].slots > 1)) {
-            if (item[data.moveItem].slots === 2) {
-              if (!(inventory[first][second + 1])) {
-                inventory[first][second] = data.moveItem
-                inventory[data.beforeInventory.first][data.beforeInventory.second] = null
-              }
-            } else if (item[data.moveItem].slots === 3) {
-              if (!inventory[first][second + 2]) {
-                inventory[first][second] = data.moveItem
-                inventory[data.beforeInventory.first][data.beforeInventory.second] = null
-              }
-            } else {
-              inventory[first][second] = data.moveItem
-              inventory[data.beforeInventory.first][data.beforeInventory.second] = null
-            }
-          }
-        } else {
-          if (item[data.moveItem].slots === 2) {
-            if (!(inventory[first][second + 1])) {
-              inventory[first][second] = data.moveItem
-              inventory[data.beforeInventory.first][data.beforeInventory.second] = null
-            }
-          } else if (item[data.moveItem].slots === 3) {
-            if (!inventory[first][second + 2]) {
-              inventory[first][second] = data.moveItem
-              inventory[data.beforeInventory.first][data.beforeInventory.second] = null
-            }
-          } else {
-            inventory[first][second] = data.moveItem
-            inventory[data.beforeInventory.first][data.beforeInventory.second] = null
+          for (let q = 0; q < item[data.moveItem].slots; q++) {
+            inventory[data.beforeInventory.first][data.beforeInventory.second + q] = null
           }
         }
       }
-      // end of inventory move system
     } else {
       inventory[data.beforeInventory.first][data.beforeInventory.second] = null
     }
@@ -172,75 +116,15 @@ mouse.event = function () {
   // take drop
   if (mouse.isOn(mob.drop)) {
     for (let i in inventory) {
-      for (let e in inventory[i]) {
+      for (let e = 0; e < inventory[i].length; e++) {
         if (!inventory[i][e]) {
-          if (inventory[i][e - 2]) {
-            if (item[inventory[i][e - 2]].slots !== 3) {
-              if (item[data.dropItem].slots === 2) {
-                if (!(inventory[i][e + 1])) {
-                  inventory[i][e] = data.dropItem
-                  data.drop = false
-                  data.dropItem = null
-                  return
-                }
-              } else if (item[data.dropItem].slots === 3) {
-                if (!inventory[i][e + 2]) {
-                  inventory[i][e] = data.dropItem
-                  data.drop = false
-                  data.dropItem = null
-                  return
-                }
-              } else {
-                inventory[i][e] = data.dropItem
-                data.drop = false
-                data.dropItem = null
-                return
-              }
+          if (e + item[data.dropItem].slots < 10) {
+            for (let w = 0; w < item[data.dropItem].slots; w++) {
+              inventory[i][e + w] = {itemId: data.dropItem, slot: w + 1}
             }
-          } else if (inventory[i][e - 1]) {
-            if (!(item[inventory[i][e - 1]].slots > 1)) {
-              if (item[data.dropItem].slots === 2) {
-                if (!(inventory[i][e + 1])) {
-                  inventory[i][e] = data.dropItem
-                  data.drop = false
-                  data.dropItem = null
-                  return
-                }
-              } else if (item[data.dropItem].slots === 3) {
-                if (!inventory[i][e + 2]) {
-                  inventory[i][e] = data.dropItem
-                  data.drop = false
-                  data.dropItem = null
-                  return
-                }
-              } else {
-                inventory[i][e] = data.dropItem
-                data.drop = false
-                data.dropItem = null
-                return
-              }
-            }
-          } else {
-            if (item[data.dropItem].slots === 2) {
-              if (!(inventory[i][e + 1])) {
-                inventory[i][e] = data.dropItem
-                data.drop = false
-                data.dropItem = null
-                return
-              }
-            } else if (item[data.dropItem].slots === 3) {
-              if (!inventory[i][e + 2]) {
-                inventory[i][e] = data.dropItem
-                data.drop = false
-                data.dropItem = null
-                return
-              }
-            } else {
-              inventory[i][e] = data.dropItem
-              data.drop = false
-              data.dropItem = null
-              return
-            }
+            data.drop = false
+            data.dropItem = null
+            return
           }
         }
       }
