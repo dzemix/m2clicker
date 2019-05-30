@@ -92,6 +92,7 @@ mouse.dropItem = function () {
       data.beforeSlot = null
     }
   }
+  // inventory system
   if (data.beforeInventory) {
     if (mouse.isOn(assets.slotsBar)) {
       for (let i in slots) {
@@ -176,6 +177,7 @@ mouse.event = function () {
       if (data.stats.exp < 100) {
         data.stats.exp += mobProto[data.lvl].exp
         data.mob.hp = data.mob.maxHp
+        data.atak = false
       } else {
         data.status.over = true
         data.atak = false
@@ -200,7 +202,6 @@ mouse.event = function () {
     console.log('restart')
     data.status.over = false
     data.stats.hp = 95
-    data.stats.exp = 0
     data.mob.hp = data.mob.maxHp
   }
   // title buttons

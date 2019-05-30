@@ -11,7 +11,7 @@ data.status = {
   overText: ''
 }
 data.stats = {
-  hp: 90,
+  hp: 95,
   exp: 0,
   BaseDmg: 10
 }
