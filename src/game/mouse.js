@@ -105,6 +105,7 @@ mouse.dropItem = function () {
       let top = mouse.top() - assets.inventory.top
       let first = Math.floor(left / 29)
       let second = Math.floor(top / 29)
+
       if (!inventory[first][second]) {
         if (inventory[first][second - 2]) {
           if (item[inventory[first][second - 2]].slots !== 3) {
@@ -157,6 +158,7 @@ mouse.dropItem = function () {
           }
         }
       }
+      // end of inventory move system
     } else {
       inventory[data.beforeInventory.first][data.beforeInventory.second] = null
     }
@@ -167,6 +169,83 @@ mouse.dropItem = function () {
 mouse.event = function () {
   // mob atak
   mob.atak(mouse)
+  // take drop
+  if (mouse.isOn(mob.drop)) {
+    for (let i in inventory) {
+      for (let e in inventory[i]) {
+        if (!inventory[i][e]) {
+          if (inventory[i][e - 2]) {
+            if (item[inventory[i][e - 2]].slots !== 3) {
+              if (item[data.dropItem].slots === 2) {
+                if (!(inventory[i][e + 1])) {
+                  inventory[i][e] = data.dropItem
+                  data.drop = false
+                  data.dropItem = null
+                  return
+                }
+              } else if (item[data.dropItem].slots === 3) {
+                if (!inventory[i][e + 2]) {
+                  inventory[i][e] = data.dropItem
+                  data.drop = false
+                  data.dropItem = null
+                  return
+                }
+              } else {
+                inventory[i][e] = data.dropItem
+                data.drop = false
+                data.dropItem = null
+                return
+              }
+            }
+          } else if (inventory[i][e - 1]) {
+            if (!(item[inventory[i][e - 1]].slots > 1)) {
+              if (item[data.dropItem].slots === 2) {
+                if (!(inventory[i][e + 1])) {
+                  inventory[i][e] = data.dropItem
+                  data.drop = false
+                  data.dropItem = null
+                  return
+                }
+              } else if (item[data.dropItem].slots === 3) {
+                if (!inventory[i][e + 2]) {
+                  inventory[i][e] = data.dropItem
+                  data.drop = false
+                  data.dropItem = null
+                  return
+                }
+              } else {
+                inventory[i][e] = data.dropItem
+                data.drop = false
+                data.dropItem = null
+                return
+              }
+            }
+          } else {
+            if (item[data.dropItem].slots === 2) {
+              if (!(inventory[i][e + 1])) {
+                inventory[i][e] = data.dropItem
+                data.drop = false
+                data.dropItem = null
+                return
+              }
+            } else if (item[data.dropItem].slots === 3) {
+              if (!inventory[i][e + 2]) {
+                inventory[i][e] = data.dropItem
+                data.drop = false
+                data.dropItem = null
+                return
+              }
+            } else {
+              inventory[i][e] = data.dropItem
+              data.drop = false
+              data.dropItem = null
+              return
+            }
+          }
+        }
+      }
+    }
+  }
   // open inventory
   if (mouse.isOn(assets.interface.invButton)) {
     if (panel.interaction.inventory) {

@@ -7,6 +7,8 @@ data.moveItem = null
 data.beforeSlot = null
 data.beforeInventory = null
 data.atak = false
+data.drop = false
+data.dropItem = null
 data.status = {
   over: false,
   overText: '',

@@ -2,6 +2,7 @@ import draw from './draw'
 import data from './data'
 import mobProto from './mobProto'
 import lvl from './lvl'
+
 var mob = {}
 mob.mob = {
   left: 525,
@@ -24,6 +25,12 @@ mob.mobHp = {
   height: 10,
   color: 'red'
 }
+mob.drop = {
+  left: 700,
+  top: 350,
+  width: 34,
+  height: 60
+}
 mob.drawMob = function (ctx) {
   // draw mob and mob underHp
   let src = mobProto[data.lvl].src
@@ -33,6 +40,13 @@ mob.drawMob = function (ctx) {
 
   mob.mobHp.width = mob.mob.width * data.percent(data.mob.maxHp, data.mob.hp)
   draw.square(ctx, mob.mobHp)
+
+  // draw drop
+  if (data.drop) {
+    ctx.strokeStyle = 'white'
+    ctx.strokeRect(mob.drop.left, mob.drop.top, mob.drop.width, mob.drop.height)
+    draw.item(ctx, {left: mob.drop.left, top: mob.drop.top, itemId: data.dropItem})
+  }
 }
 mob.hits = function () {
   if (!data.status.over) {
@@ -55,6 +69,9 @@ mob.atak = function (mouse) {
       }
     }
     if (data.mob.hp <= 0) {
+      // drop items
+      mob.dropFunction(data.lvl)
+      // exp module
       if (data.stats.exp < lvl[data.stats.lvl].exp) {
         data.stats.exp += mobProto[data.lvl].exp
         data.mob.hp = data.mob.maxHp
@@ -78,6 +95,15 @@ mob.atak = function (mouse) {
         }
       }
     }
+  }
+}
+mob.dropFunction = function (moblvl) {
+  let random = Math.random(0, 100)
+  random = random * 100
+  random = Math.floor(random)
+  if (mobProto[moblvl].drops[0].chance > random) {
+    data.drop = true
+    data.dropItem = mobProto[moblvl].drops[0].itemId
   }
 }
 export default mob
