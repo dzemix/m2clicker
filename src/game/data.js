@@ -13,7 +13,7 @@ data.status = {
   lvlup: false
 }
 data.stats = {}
-data.stats.lvl = 4
+data.stats.lvl = 0
 data.stats.maxlvl = lvl.length - 1
 data.stats.maxHp = 100
 data.stats.hp = data.stats.maxHp

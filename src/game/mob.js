@@ -63,16 +63,18 @@ mob.atak = function (mouse) {
           if (data.stats.lvl < data.stats.maxlvl) {
             data.stats.lvl++
             data.stats.exp = 0
+            data.status.lvlup = true
+            data.status.overText = 'lvl up'
           }
         }
       } else {
         data.mob.hp = data.mob.maxHp
         data.atak = false
         data.status.overText = 'lvl up'
-        data.status.lvlup = true
         if (data.stats.lvl < data.stats.maxlvl) {
           data.stats.lvl++
           data.stats.exp = 0
+          data.status.lvlup = true
         }
       }
     }

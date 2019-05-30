@@ -88,6 +88,15 @@ panel.draw = function (ctx) {
     ctx.fillText('restart', assets.interface.restart.left + 20,
       assets.interface.restart.top + 30)
   }
+  // if lvlup draw lvlup
+  if (data.status.lvlup) {
+    ctx.font = '40px Georgia'
+    ctx.fillStyle = 'yellow'
+    ctx.fillText(data.status.overText, 540, 200)
+    setTimeout(() => {
+      data.status.lvlup = false
+    }, 2000)
+  }
 }
 panel.inventory = function (ctx) {
   let left = assets.slot.left
