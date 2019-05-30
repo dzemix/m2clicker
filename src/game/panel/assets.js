@@ -75,4 +75,10 @@ assets.slotsBar = {
   width: 300,
   height: 40,
   color: 'red'}
+assets.statsPanel = {
+  left: 30,
+  top: 100,
+  width: 220,
+  height: 250,
+  color: 'black'}
 export default assets

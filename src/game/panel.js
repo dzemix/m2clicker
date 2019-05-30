@@ -3,9 +3,11 @@ import draw from './draw'
 import assets from './panel/assets'
 import mobProto from './mobProto'
 import inventory from './inventory'
+import lvl from './lvl'
 var panel = {}
 panel.interaction = {
-  inventory: false
+  inventory: false,
+  statsPanel: false
 }
 panel.titleBar = {
   left: 500,
@@ -33,7 +35,7 @@ panel.draw = function (ctx) {
   // draw black square under interface
   draw.square(ctx, assets.underExp)
   // draw exp
-  assets.exp.width = data.stats.exp
+  assets.exp.width = 105 * data.percent(lvl[data.stats.lvl].exp, data.stats.exp)
   draw.square(ctx, assets.exp)
   // draw interface
   draw.image(ctx, '/static/panel2.png', 0, 540)
@@ -46,6 +48,17 @@ panel.draw = function (ctx) {
 
   // draw inv button
   draw.square(ctx, assets.interface.invButton)
+  // if stats draw statsPanel
+
+  if (this.interaction.statsPanel) {
+    draw.square(ctx, assets.statsPanel)
+    ctx.font = '15px Georgia'
+    ctx.fillStyle = 'yellow'
+    ctx.fillText(`lvl: ${lvl[data.stats.lvl].lvl}`, 50, 120)
+    let expvalue = `exp ${data.stats.exp}/${lvl[data.stats.lvl].exp}`
+    ctx.fillText(expvalue, 50, 135)
+  }
+
   // if inventory true draw inventory
   if (this.interaction.inventory) {
     draw.image(ctx,

@@ -166,26 +166,7 @@ mouse.dropItem = function () {
 }
 mouse.event = function () {
   // mob atak
-  if (mouse.isOn(mob.mob)) {
-    if (!data.status.over) {
-      if (data.mob.hp > 0) {
-        data.atak = true
-        data.mob.hp -= data.dmg
-      }
-    }
-    if (data.mob.hp <= 0) {
-      if (data.stats.exp < 100) {
-        data.stats.exp += mobProto[data.lvl].exp
-        data.mob.hp = data.mob.maxHp
-        data.atak = false
-      } else {
-        data.status.over = true
-        data.atak = false
-        data.status.overText = 'You Win'
-        data.stats.exp = 0
-      }
-    }
-  }
+  mob.atak(mouse)
   // open inventory
   if (mouse.isOn(assets.interface.invButton)) {
     if (panel.interaction.inventory) {

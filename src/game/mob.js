@@ -1,6 +1,7 @@
 import draw from './draw'
 import data from './data'
 import mobProto from './mobProto'
+import lvl from './lvl'
 var mob = {}
 mob.mob = {
   left: 525,
@@ -45,5 +46,36 @@ mob.hits = function () {
     data.status.overText = 'You Lose'
   }
 }
-
+mob.atak = function (mouse) {
+  if (mouse.isOn(mob.mob)) {
+    if (!data.status.over) {
+      if (data.mob.hp > 0) {
+        data.atak = true
+        data.mob.hp -= data.dmg
+      }
+    }
+    if (data.mob.hp <= 0) {
+      if (data.stats.exp < lvl[data.stats.lvl].exp) {
+        data.stats.exp += mobProto[data.lvl].exp
+        data.mob.hp = data.mob.maxHp
+        data.atak = false
+        if (data.stats.exp >= lvl[data.stats.lvl].exp) {
+          if (data.stats.lvl < data.stats.maxlvl) {
+            data.stats.lvl++
+            data.stats.exp = 0
+          }
+        }
+      } else {
+        data.mob.hp = data.mob.maxHp
+        data.atak = false
+        data.status.overText = 'lvl up'
+        data.status.lvlup = true
+        if (data.stats.lvl < data.stats.maxlvl) {
+          data.stats.lvl++
+          data.stats.exp = 0
+        }
+      }
+    }
+  }
+}
 export default mob

@@ -1,4 +1,5 @@
 import mobProto from './mobProto'
+import lvl from './lvl'
 var data = {}
 data.lvl = 0
 data.maxlvl = mobProto.length - 1
@@ -8,9 +9,12 @@ data.beforeInventory = null
 data.atak = false
 data.status = {
   over: false,
-  overText: ''
+  overText: '',
+  lvlup: false
 }
 data.stats = {}
+data.stats.lvl = 4
+data.stats.maxlvl = lvl.length - 1
 data.stats.maxHp = 100
 data.stats.hp = data.stats.maxHp
 data.stats.exp = 0

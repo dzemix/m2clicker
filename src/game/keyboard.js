@@ -26,6 +26,13 @@ keyboard.keyListener = function () {
         panel.interaction.inventory = false
       }
     }
+    if (evt.key === 'c') {
+      if (panel.interaction.statsPanel === false) {
+        panel.interaction.statsPanel = true
+      } else {
+        panel.interaction.statsPanel = false
+      }
+    }
   })
 }
 export default keyboard
