@@ -38,7 +38,7 @@ panel.draw = function (ctx) {
   // draw interface
   draw.image(ctx, '/static/panel2.png', 0, 540)
   // draw hp
-  assets.hp.width = data.stats.hp
+  assets.hp.width = 95 * data.percent(data.stats.maxHp, data.stats.hp)
   draw.square(ctx, assets.hp)
   // draw slots
 

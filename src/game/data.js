@@ -10,18 +10,22 @@ data.status = {
   over: false,
   overText: ''
 }
-data.stats = {
-  hp: 95,
-  exp: 0,
-  BaseDmg: 10
-}
+data.stats = {}
+data.stats.maxHp = 100
+data.stats.hp = data.stats.maxHp
+data.stats.exp = 0
+data.stats.BaseDmg = 10
 data.dmg = data.stats.BaseDmg + 5
 data.mob = {}
 data.mob.maxHp = mobProto[data.lvl].hp
 data.mob.hp = data.mob.maxHp
-data.mob.percent = function () {
-  var percent = data.mob.hp / data.mob.maxHp
-  var final = percent.toFixed(2)
-  return final
+
+data.percent = function (max, current) {
+  let percent = current / max
+  if (percent < 0) {
+    percent = 0
+  }
+  percent = percent.toFixed(2)
+  return percent
 }
 export default data

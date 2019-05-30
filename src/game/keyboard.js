@@ -10,11 +10,10 @@ keyboard.keyListener = function () {
       if (evt.key === keys[i]) {
         if (slots[evt.key - 1].itemId === 0) {
           if (!data.status.over) {
-            if (data.stats.hp <= 90) {
+            if (data.stats.hp < data.stats.maxHp - 5) {
               data.stats.hp += 10
-              console.log(data.stats.hp)
             } else {
-              data.stats.hp = 95
+              data.stats.hp = data.stats.maxHp
             }
           }
         }

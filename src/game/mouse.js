@@ -201,7 +201,7 @@ mouse.event = function () {
   if (mouse.isOn(assets.interface.restart) && data.status.over) {
     console.log('restart')
     data.status.over = false
-    data.stats.hp = 95
+    data.stats.hp = data.stats.maxHp
     data.mob.hp = data.mob.maxHp
   }
   // title buttons
@@ -221,27 +221,5 @@ mouse.event = function () {
       data.atak = false
     }
   }
-  // inventory event
-  // if (panel.interaction.inventory) {
-  //   if (mouse.isOn(assets.inventory)) {
-  //     let left = mouse.left() - assets.inventory.left
-  //     let top = mouse.top() - assets.inventory.top
-  //     let first = Math.floor(left / 29)
-  //     let second = Math.floor(top / 29)
-  //     if (inventory[first][second] === null) {
-  //       if (item[inventory[first][second - 1]]) {
-  //         if (item[inventory[first][second - 1]].slots > 1) {
-  //           console.log(inventory[first][second - 1])
-  //         }
-  //       } else if (item[inventory[first][second - 2]]) {
-  //         if (item[inventory[first][second - 2]].slots === 3) {
-  //           console.log(inventory[first][second - 2])
-  //         }
-  //       }
-  //     } else {
-  //       console.log(inventory[first][second])
-  //     }
-  //   }
-  // }
 }
 export default mouse

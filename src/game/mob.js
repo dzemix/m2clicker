@@ -30,7 +30,7 @@ mob.drawMob = function (ctx) {
   draw.square(ctx, mob.mobUnderHp)
   // draw mob hp
 
-  mob.mobHp.width = mob.mob.width * data.mob.percent()
+  mob.mobHp.width = mob.mob.width * data.percent(data.mob.maxHp, data.mob.hp)
   draw.square(ctx, mob.mobHp)
 }
 mob.hits = function () {
