@@ -1,7 +1,7 @@
 import mobProto from './mobProto'
 var data = {}
 data.lvl = 0
-data.maxlvl = 1
+data.maxlvl = mobProto.length - 1
 data.moveItem = null
 data.beforeSlot = null
 data.beforeInventory = null

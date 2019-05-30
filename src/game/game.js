@@ -24,5 +24,6 @@ game.main = function (ctx, mouse) {
   keyboard.keyListener()
 
   // inventory first step
+  console.log(mobProto.length)
 }
 export default game
