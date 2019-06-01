@@ -93,13 +93,19 @@ mouse.dropItem = function () {
       let top = mouse.top() - assets.inventory.top
       let i = Math.floor(left / 29)
       let e = Math.floor(top / 29)
+      let validation = false
       if (!inventory[i][e]) {
+        for (let o = 0; o < item[data.moveItem].slots; o++) {
+          if (!inventory[i][e + o] && o + 1 === item[data.moveItem].slots) {
+            validation = true
+          }
+        }
+      }
+      if (validation) {
         if (e + item[data.moveItem].slots - 1 < 9) {
           for (let t = 0; t < item[data.moveItem].slots; t++) {
             inventory[i][e + t] = {itemId: data.moveItem, slot: t + 1}
-          }
-          for (let q = 0; q < item[data.moveItem].slots; q++) {
-            inventory[data.beforeInventory.first][data.beforeInventory.second + q] = null
+            inventory[data.beforeInventory.first][data.beforeInventory.second + t] = null
           }
         }
       }
@@ -117,7 +123,15 @@ mouse.event = function () {
   if (mouse.isOn(mob.drop)) {
     for (let i in inventory) {
       for (let e = 0; e < inventory[i].length; e++) {
+        let validation = false
         if (!inventory[i][e]) {
+          for (let o = 0; o < item[data.dropItem].slots; o++) {
+            if (!inventory[i][e + o] && o + 1 === item[data.dropItem].slots) {
+              validation = true
+            }
+          }
+        }
+        if (validation) {
           if (e + item[data.dropItem].slots < 10) {
             for (let w = 0; w < item[data.dropItem].slots; w++) {
               inventory[i][e + w] = {itemId: data.dropItem, slot: w + 1}
