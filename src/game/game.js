@@ -4,6 +4,7 @@ import maps from './maps'
 import mob from './mob'
 import data from './data'
 import mobProto from './mobProto'
+import equipment from './equipment'
 var game = {}
 game.main = function (ctx, mouse) {
   // draw
@@ -19,7 +20,7 @@ game.main = function (ctx, mouse) {
       mob.hits()
     }
   }, 1000 * mobProto[0].ataks)
-
+  equipment.main()
   // key listener
   keyboard.keyListener()
 }

@@ -17,12 +17,16 @@ var item = [
   {
     title: 'sword',
     src: '/static/sword.png',
-    slots: 2
+    slots: 2,
+    type: 'weapon',
+    dmg: 10
   },
   {
     title: 'glewia',
     src: '/static/glaive.png',
-    slots: 3
+    slots: 3,
+    type: 'weapon',
+    dmg: 20
   }
 ]
 

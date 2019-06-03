@@ -7,6 +7,7 @@ import data from './data'
 import panel from './panel'
 import mobProto from './mobProto'
 import inventory from './inventory'
+import equipment from './equipment'
 var mouse = {
   pageX: null,
   pageY: null,
@@ -121,9 +122,12 @@ mouse.dropItem = function () {
   if (data.beforeInventory) {
     if (mouse.isOn(assets.weapon)) {
       if (!inventory.weapon.itemId) {
-        inventory.weapon.itemId = data.moveItem
-        for (let t = 0; t < item[data.moveItem].slots; t++) {
-          inventory[data.beforeInventory.first][data.beforeInventory.second + t] = null
+        if (item[data.moveItem].type === 'weapon') {
+          inventory.weapon.itemId = data.moveItem
+          equipment.main()
+          for (let t = 0; t < item[data.moveItem].slots; t++) {
+            inventory[data.beforeInventory.first][data.beforeInventory.second + t] = null
+          }
         }
       }
     } else if (mouse.isOn(assets.slotsBar)) {
