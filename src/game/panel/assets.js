@@ -81,4 +81,10 @@ assets.statsPanel = {
   width: 220,
   height: 250,
   color: 'black'}
+assets.weapon = {
+  left: assets.slot.left + 8,
+  top: assets.slot.top - 200,
+  width: 26,
+  height: 85,
+  color: 'red'}
 export default assets

@@ -6,6 +6,7 @@ data.maxlvl = mobProto.length - 1
 data.moveItem = null
 data.beforeSlot = null
 data.beforeInventory = null
+data.beforeEquip = null
 data.atak = false
 data.drop = false
 data.dropItem = null

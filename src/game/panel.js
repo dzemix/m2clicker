@@ -98,6 +98,7 @@ panel.draw = function (ctx) {
     }, 2000)
   }
 }
+// draw equipment
 panel.inventory = function (ctx) {
   let left = assets.slot.left
   let top = assets.slot.top
@@ -112,6 +113,10 @@ panel.inventory = function (ctx) {
     }
     top = assets.slot.top
     left += 29
+  }
+  // draw weapon
+  if (inventory.weapon.itemId) {
+    draw.item(ctx, {itemId: inventory.weapon.itemId, left: assets.weapon.left, top: assets.weapon.top})
   }
 }
 export default panel
