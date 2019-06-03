@@ -67,4 +67,7 @@ var inventory = [
     null
   ]
 ]
+inventory.weapon = {
+  itemId: 3
+}
 export default inventory

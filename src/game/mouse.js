@@ -7,6 +7,7 @@ import data from './data'
 import panel from './panel'
 import mobProto from './mobProto'
 import inventory from './inventory'
+import equipment from './equipment'
 var mouse = {
   pageX: null,
   pageY: null,
@@ -47,6 +48,12 @@ mouse.stickyItem = function () {
     }
   }
   if (panel.interaction.inventory) {
+    if (mouse.isOn(assets.weapon)) {
+      if (inventory.weapon.itemId) {
+        data.moveItem = inventory.weapon.itemId
+        data.beforeEquip = 'weapon'
+      }
+    }
     if (mouse.isOn(assets.inventory)) {
       let left = mouse.left() - assets.inventory.left
       let top = mouse.top() - assets.inventory.top
@@ -60,6 +67,37 @@ mouse.stickyItem = function () {
   }
 }
 mouse.dropItem = function () {
+  if (data.beforeEquip) {
+    if (mouse.isOn(assets.inventory)) {
+      let left = mouse.left() - assets.inventory.left
+      let top = mouse.top() - assets.inventory.top
+      let i = Math.floor(left / 29)
+      let e = Math.floor(top / 29)
+      if (!inventory[i][e]) {
+        let validation = false
+        if (!inventory[i][e]) {
+          for (let o = 0; o < item[data.moveItem].slots; o++) {
+            if (!inventory[i][e + o] && o + 1 === item[data.moveItem].slots) {
+              validation = true
+            }
+          }
+        }
+        if (validation) {
+          if (e + item[data.moveItem].slots - 1 < 9) {
+            for (let t = 0; t < item[data.moveItem].slots; t++) {
+              inventory[i][e + t] = {itemId: data.moveItem, slot: t + 1}
+              data.beforeEquip = null
+            }
+            inventory.weapon.itemId = null
+          }
+        }
+        data.moveItem = null
+      }
+    } else {
+      data.moveItem = null
+      console.log('u cant drop equiped item')
+    }
+  }
   if (data.beforeSlot) {
     if (data.moveItem !== null) {
       if (mouse.isOn(assets.slotsBar)) {
@@ -82,7 +120,17 @@ mouse.dropItem = function () {
   }
   // inventory system
   if (data.beforeInventory) {
-    if (mouse.isOn(assets.slotsBar)) {
+    if (mouse.isOn(assets.weapon)) {
+      if (!inventory.weapon.itemId) {
+        if (item[data.moveItem].type === 'weapon') {
+          inventory.weapon.itemId = data.moveItem
+          equipment.main()
+          for (let t = 0; t < item[data.moveItem].slots; t++) {
+            inventory[data.beforeInventory.first][data.beforeInventory.second + t] = null
+          }
+        }
+      }
+    } else if (mouse.isOn(assets.slotsBar)) {
       for (let i in slots) {
         if (mouse.isOn(slots[i])) {
           slots[i].itemId = data.moveItem
@@ -110,7 +158,9 @@ mouse.dropItem = function () {
         }
       }
     } else {
-      inventory[data.beforeInventory.first][data.beforeInventory.second] = null
+      for (let i = 0; i < item[data.moveItem].slots; i++) {
+        inventory[data.beforeInventory.first][data.beforeInventory.second + i] = null
+      }
     }
     data.moveItem = null
     data.beforeInventory = null

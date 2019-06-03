@@ -101,9 +101,11 @@ mob.dropFunction = function (moblvl) {
   let random = Math.random(0, 100)
   random = random * 100
   random = Math.floor(random)
-  if (mobProto[moblvl].drops[0].chance > random) {
-    data.drop = true
-    data.dropItem = mobProto[moblvl].drops[0].itemId
+  if (mobProto[moblvl].drops) {
+    if (mobProto[moblvl].drops[0].chance > random) {
+      data.drop = true
+      data.dropItem = mobProto[moblvl].drops[0].itemId
+    }
   }
 }
 export default mob

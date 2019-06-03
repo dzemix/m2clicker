@@ -2,5 +2,6 @@
 
   description: maybe some when it will be a playable game
 
-# to-do 
+# to-do
+  inventory 2.0
   make playable

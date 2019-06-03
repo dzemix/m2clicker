@@ -8,7 +8,7 @@ var mobProto = [
     ataks: 0.8,
     drops: [
       {
-        itemId: 3,
+        itemId: 4,
         chance: 100
       }
     ]
