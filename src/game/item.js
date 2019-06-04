@@ -34,6 +34,13 @@ var item = [
     slots: 2,
     type: 'armor',
     armor: 10
+  },
+  {
+    title: 'helmet',
+    src: '/static/helmet.png',
+    slots: 1,
+    type: 'helmet',
+    armor: 5
   }
 ]
 
