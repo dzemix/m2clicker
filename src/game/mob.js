@@ -33,15 +33,16 @@ mob.drop = {
 }
 mob.drawMob = function (ctx) {
   // draw mob and mob underHp
-  let src = mobProto[data.lvl].src
-  draw.image(ctx, src, mob.mob.left, mob.mob.top)
-  draw.square(ctx, mob.mobUnderHp)
-  // draw mob hp
+  if (data.mobResp) {
+    let src = mobProto[data.lvl].src
+    draw.image(ctx, src, mob.mob.left, mob.mob.top)
+    draw.square(ctx, mob.mobUnderHp)
+    // draw mob hp
 
-  mob.mobHp.width = mob.mob.width * data.percent(data.mob.maxHp, data.mob.hp)
-  draw.square(ctx, mob.mobHp)
-
-  // draw drop
+    mob.mobHp.width = mob.mob.width * data.percent(data.mob.maxHp, data.mob.hp)
+    draw.square(ctx, mob.mobHp)
+  }
+  // drop resp
   if (data.drop) {
     ctx.strokeStyle = 'white'
     ctx.strokeRect(mob.drop.left, mob.drop.top, mob.drop.width, mob.drop.height)
@@ -66,13 +67,18 @@ mob.hits = function () {
 }
 mob.atak = function (mouse) {
   if (mouse.isOn(mob.mob)) {
-    if (!data.status.over) {
+    if (!data.status.over && data.mobResp) {
       if (data.mob.hp > 0) {
         data.atak = true
         data.mob.hp -= data.dmg
       }
     }
     if (data.mob.hp <= 0) {
+      // data resp delay
+      data.mobResp = false
+      setTimeout(() => {
+        data.mobResp = true
+      }, 1000)
       // drop items
       mob.dropFunction(data.lvl)
       // exp module

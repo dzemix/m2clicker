@@ -2,6 +2,7 @@ import mobProto from './mobProto'
 import lvl from './lvl'
 var data = {}
 data.lvl = 0
+data.mobResp = true
 data.maxlvl = mobProto.length - 1
 data.moveItem = null
 data.beforeSlot = null
