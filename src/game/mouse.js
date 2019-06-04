@@ -36,7 +36,7 @@ mouse.move = function (ctx) {
     draw.image(ctx, src, mouse.left() - 10, mouse.top() - 10)
   }
 }
-mouse.stickyItem = function () {
+mouse.catch = function () {
   if (mouse.isOn(assets.slotsBar)) {
     for (let e in slots) {
       if (mouse.isOn(slots[e])) {
@@ -47,6 +47,7 @@ mouse.stickyItem = function () {
       }
     }
   }
+  // catch inventory
   if (panel.interaction.inventory) {
     if (mouse.isOn(assets.weapon)) {
       if (inventory.weapon.itemId) {
@@ -58,6 +59,12 @@ mouse.stickyItem = function () {
       if (inventory.armor.itemId) {
         data.moveItem = inventory.armor.itemId
         data.beforeEquip = 'armor'
+      }
+    }
+    if (mouse.isOn(assets.helmet)) {
+      if (inventory.helmet.itemId) {
+        data.moveItem = inventory.helmet.itemId
+        data.beforeEquip = 'helmet'
       }
     }
     if (mouse.isOn(assets.inventory)) {
@@ -127,7 +134,17 @@ mouse.dropItem = function () {
   }
   // inventory system
   if (data.beforeInventory) {
-    if (mouse.isOn(assets.armor)) {
+    if (mouse.isOn(assets.weapon)) {
+      if (!inventory.weapon.itemId) {
+        if (item[data.moveItem].type === 'weapon') {
+          inventory.weapon.itemId = data.moveItem
+          equipment.main()
+          for (let t = 0; t < item[data.moveItem].slots; t++) {
+            inventory[data.beforeInventory.first][data.beforeInventory.second + t] = null
+          }
+        }
+      }
+    } else if (mouse.isOn(assets.armor)) {
       if (!inventory.armor.itemId) {
         if (item[data.moveItem].type === 'armor') {
           inventory.armor.itemId = data.moveItem
@@ -137,10 +154,10 @@ mouse.dropItem = function () {
           }
         }
       }
-    } else if (mouse.isOn(assets.weapon)) {
-      if (!inventory.weapon.itemId) {
-        if (item[data.moveItem].type === 'weapon') {
-          inventory.weapon.itemId = data.moveItem
+    } else if (mouse.isOn(assets.helmet)) {
+      if (!inventory.helmet.itemId) {
+        if (item[data.moveItem].type === 'helmet') {
+          inventory.helmet.itemId = data.moveItem
           equipment.main()
           for (let t = 0; t < item[data.moveItem].slots; t++) {
             inventory[data.beforeInventory.first][data.beforeInventory.second + t] = null

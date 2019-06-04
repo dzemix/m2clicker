@@ -34,7 +34,7 @@ export default {
       mouse.pageX = event.pageX
     },
     holdOn () {
-      mouse.stickyItem()
+      mouse.catch()
     },
     holdOff () {
       mouse.dropItem()

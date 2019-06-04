@@ -122,6 +122,7 @@ panel.inventory = function (ctx) {
   if (inventory.armor.itemId) {
     draw.item(ctx, {itemId: inventory.armor.itemId, left: assets.armor.left, top: assets.armor.top})
   }
+  // draw helmet
   if (inventory.helmet.itemId) {
     draw.item(ctx, {itemId: inventory.helmet.itemId, left: assets.helmet.left, top: assets.helmet.top})
   }
