@@ -14,6 +14,5 @@ equipment.main = function () {
   } else {
     data.armor = data.baseArmor
   }
-  console.log(data.dmg, data.armor)
 }
 export default equipment
