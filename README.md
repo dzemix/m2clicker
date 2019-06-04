@@ -4,4 +4,5 @@
 
 # to-do
   inventory 2.0
+  make armor
   make playable
