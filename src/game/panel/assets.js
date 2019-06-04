@@ -87,4 +87,10 @@ assets.weapon = {
   width: 26,
   height: 85,
   color: 'red'}
+assets.armor = {
+  left: assets.slot.left + 41,
+  top: assets.slot.top - 172,
+  width: 26,
+  height: 63
+}
 export default assets

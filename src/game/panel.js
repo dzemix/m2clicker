@@ -118,5 +118,9 @@ panel.inventory = function (ctx) {
   if (inventory.weapon.itemId) {
     draw.item(ctx, {itemId: inventory.weapon.itemId, left: assets.weapon.left, top: assets.weapon.top})
   }
+  // draw armor
+  if (inventory.armor.itemId) {
+    draw.item(ctx, {itemId: inventory.armor.itemId, left: assets.armor.left, top: assets.armor.top})
+  }
 }
 export default panel
