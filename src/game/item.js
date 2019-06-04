@@ -27,6 +27,13 @@ var item = [
     slots: 3,
     type: 'weapon',
     dmg: 20
+  },
+  {
+    title: 'mnisia',
+    src: '/static/mnisia.png',
+    slots: 2,
+    type: 'armor',
+    armor: 10
   }
 ]
 
