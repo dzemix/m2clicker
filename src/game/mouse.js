@@ -95,6 +95,7 @@ mouse.dropItem = function () {
             }
             inventory[data.beforeEquip].itemId = null
             data.beforeEquip = null
+            equipment.main()
           }
         }
         data.moveItem = null

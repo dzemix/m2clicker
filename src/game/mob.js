@@ -51,7 +51,11 @@ mob.drawMob = function (ctx) {
 mob.hits = function () {
   if (!data.status.over) {
     if (data.stats.hp > 0) {
-      data.stats.hp -= mobProto[data.lvl].dmg
+      let dmg = mobProto[data.lvl].dmg - data.armor
+      if (dmg < 0) {
+        dmg = 0
+      }
+      data.stats.hp -= dmg
     }
   }
   if (data.stats.hp <= 0) {
