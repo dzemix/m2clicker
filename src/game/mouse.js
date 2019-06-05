@@ -155,7 +155,6 @@ mouse.dropItem = function () {
       if (!inventory.weapon.itemId) {
         if (item[data.moveItem].type === 'weapon') {
           if (item[data.moveItem].lvl <= lvl[data.stats.lvl].lvl) {
-            console.log(item[data.moveItem].lvl, lvl[data.stats.lvl].lvl)
             inventory.weapon.itemId = data.moveItem
             equipment.main()
             for (let t = 0; t < item[data.moveItem].slots; t++) {
@@ -189,7 +188,6 @@ mouse.dropItem = function () {
         }
       }
     } else if (mouse.isOn(assets.shield)) {
-      console.log('shield')
       if (!inventory.shield.itemId) {
         if (item[data.moveItem].type === 'shield') {
           if (item[data.moveItem].lvl <= lvl[data.stats.lvl].lvl) {
@@ -202,7 +200,6 @@ mouse.dropItem = function () {
         }
       }
     } else if (mouse.isOn(assets.shoes)) {
-      console.log('shoes')
       if (!inventory.shoes.itemId) {
         if (item[data.moveItem].type === 'shoes') {
           if (item[data.moveItem].lvl <= lvl[data.stats.lvl].lvl) {
