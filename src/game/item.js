@@ -23,6 +23,10 @@ var item = [
       {
         type: 'dmg',
         value: 10
+      },
+      {
+        type: 'armor',
+        value: 10
       }
     ],
     lvl: 1

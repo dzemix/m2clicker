@@ -4,6 +4,8 @@ import assets from './panel/assets'
 import mobProto from './mobProto'
 import inventory from './inventory'
 import lvl from './lvl'
+import mouse from './mouse'
+import item from './item'
 var panel = {}
 panel.interaction = {
   inventory: false,
@@ -66,6 +68,7 @@ panel.draw = function (ctx) {
       assets.interface.inventory.left,
       assets.interface.inventory.top)
     panel.inventory(ctx)
+    panel.popout(ctx)
   }
   // draw title bar !!!
   draw.square(ctx, panel.titleBar)
@@ -133,6 +136,46 @@ panel.inventory = function (ctx) {
   // draw shoes
   if (inventory.shoes.itemId) {
     draw.item(ctx, {itemId: inventory.shoes.itemId, left: assets.shoes.left, top: assets.shoes.top})
+  }
+}
+panel.popout = function (ctx) {
+  // popout on inventory
+  if (mouse.isOn(assets.inventory)) {
+    let left = mouse.left() - assets.inventory.left
+    let top = mouse.top() - assets.inventory.top
+    let i = Math.floor(left / 29)
+    let e = Math.floor(top / 29)
+    if (inventory[i][e]) {
+      let value = item[inventory[i][e].itemId]
+      let leftt = (assets.inventory.left + i * 29) - 150
+      let topp = assets.inventory.top + e * 29
+      panel.drawPopOut(ctx, value, leftt, topp)
+    }
+  }
+  // popout on equipment
+  let equipment = ['weapon', 'armor', 'helmet', 'shield', 'shoes']
+  for (let i in equipment) {
+    if (mouse.isOn(assets[equipment[i]])) {
+      if (item[inventory[equipment[i]].itemId]) {
+        let value = item[inventory[equipment[i]].itemId]
+        let leftt = (assets[equipment[i]].left) - 150
+        let topp = assets[equipment[i]].top
+        panel.drawPopOut(ctx, value, leftt, topp)
+      }
+    }
+  }
+  panel.drawPopOut = function (ctx, value, leftt, topp) {
+    draw.square(ctx, {left: leftt, top: topp, width: 150, height: 200, color: 'black'})
+    ctx.font = '15px Georgia'
+    ctx.fillStyle = 'yellow'
+    ctx.fillText(`name: ${value.title}`, leftt + 4, topp + 17)
+    ctx.fillText(`lvl: ${value.lvl}`, leftt + 4, topp + 17 + 17)
+    if (value.bon) {
+      for (let i = 0; i < value.bon.length; i++) {
+        let inc = 17 * (i + 2)
+        ctx.fillText(`${value.bon[i].type}: ${value.bon[i].value}`, leftt + 4, topp + 17 + inc)
+      }
+    }
   }
 }
 export default panel
