@@ -204,25 +204,31 @@ mouse.event = function () {
   // mob atak
   mob.atak(mouse)
   // take drop
-  if (mouse.isOn(mob.drop)) {
-    for (let i in inventory) {
-      for (let e = 0; e < inventory[i].length; e++) {
-        let validation = false
-        if (!inventory[i][e]) {
-          for (let o = 0; o < item[data.dropItem].slots; o++) {
-            if (!inventory[i][e + o] && o + 1 === item[data.dropItem].slots) {
-              validation = true
+
+  if (data.dropItem) {
+    for (let q in mob.drop) {
+      if (mouse.isOn(mob.drop[q])) {
+        if (data.dropItem[q]) {
+          for (let i in inventory) {
+            for (let e = 0; e < inventory[i].length; e++) {
+              let validation = false
+              if (!inventory[i][e]) {
+                for (let o = 0; o < item[data.dropItem[q]].slots; o++) {
+                  if (!inventory[i][e + o] && o + 1 === item[data.dropItem[q]].slots) {
+                    validation = true
+                  }
+                }
+              }
+              if (validation) {
+                if (e + item[data.dropItem[q]].slots < 10) {
+                  for (let w = 0; w < item[data.dropItem[q]].slots; w++) {
+                    inventory[i][e + w] = {itemId: data.dropItem[q], slot: w + 1}
+                  }
+                  data.dropItem[q] = null
+                  return
+                }
+              }
             }
-          }
-        }
-        if (validation) {
-          if (e + item[data.dropItem].slots < 10) {
-            for (let w = 0; w < item[data.dropItem].slots; w++) {
-              inventory[i][e + w] = {itemId: data.dropItem, slot: w + 1}
-            }
-            data.drop = false
-            data.dropItem = null
-            return
           }
         }
       }

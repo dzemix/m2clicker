@@ -9,8 +9,7 @@ data.beforeSlot = null
 data.beforeInventory = null
 data.beforeEquip = null
 data.atak = false
-data.drop = false
-data.dropItem = null
+data.dropItem = []
 data.status = {
   over: false,
   overText: '',
