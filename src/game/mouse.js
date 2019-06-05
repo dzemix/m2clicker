@@ -74,7 +74,11 @@ mouse.catch = function () {
       let second = Math.floor(top / 29)
       if (inventory[first][second]) {
         data.moveItem = inventory[first][second].itemId
-        data.beforeInventory = {first: first, second: second}
+        let decrement = 0
+        for (let i = inventory[first][second].slot; i > 1; i--) {
+          decrement++
+        }
+        data.beforeInventory = {first: first, second: second - decrement}
       }
     }
   }
@@ -171,6 +175,7 @@ mouse.dropItem = function () {
         }
       }
     } else if (mouse.isOn(assets.inventory)) {
+      console.log(inventory)
       let left = mouse.left() - assets.inventory.left
       let top = mouse.top() - assets.inventory.top
       let i = Math.floor(left / 29)
