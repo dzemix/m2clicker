@@ -130,5 +130,9 @@ panel.inventory = function (ctx) {
   if (inventory.shield.itemId) {
     draw.item(ctx, {itemId: inventory.shield.itemId, left: assets.shield.left, top: assets.shield.top})
   }
+  // draw shoes
+  if (inventory.shoes.itemId) {
+    draw.item(ctx, {itemId: inventory.shoes.itemId, left: assets.shoes.left, top: assets.shoes.top})
+  }
 }
 export default panel

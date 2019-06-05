@@ -105,4 +105,10 @@ assets.shield = {
   width: 26,
   height: 26
 }
+assets.shoes = {
+  left: assets.slot.left + 41,
+  top: assets.slot.top - 76,
+  width: 26,
+  height: 26
+}
 export default assets

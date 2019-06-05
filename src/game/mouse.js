@@ -73,6 +73,12 @@ mouse.catch = function () {
         data.beforeEquip = 'shield'
       }
     }
+    if (mouse.isOn(assets.shoes)) {
+      if (inventory.shoes.itemId) {
+        data.moveItem = inventory.shoes.itemId
+        data.beforeEquip = 'shoes'
+      }
+    }
     if (mouse.isOn(assets.inventory)) {
       let left = mouse.left() - assets.inventory.left
       let top = mouse.top() - assets.inventory.top
@@ -179,6 +185,17 @@ mouse.dropItem = function () {
       if (!inventory.shield.itemId) {
         if (item[data.moveItem].type === 'shield') {
           inventory.shield.itemId = data.moveItem
+          equipment.main()
+          for (let t = 0; t < item[data.moveItem].slots; t++) {
+            inventory[data.beforeInventory.first][data.beforeInventory.second + t] = null
+          }
+        }
+      }
+    } else if (mouse.isOn(assets.shoes)) {
+      console.log('shoes')
+      if (!inventory.shoes.itemId) {
+        if (item[data.moveItem].type === 'shoes') {
+          inventory.shoes.itemId = data.moveItem
           equipment.main()
           for (let t = 0; t < item[data.moveItem].slots; t++) {
             inventory[data.beforeInventory.first][data.beforeInventory.second + t] = null

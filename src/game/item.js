@@ -48,6 +48,13 @@ var item = [
     slots: 1,
     type: 'shield',
     armor: 5
+  },
+  {
+    title: 'shoes',
+    src: '/static/shoes.png',
+    slots: 1,
+    type: 'shoes',
+    armor: 5
   }
 ]
 
