@@ -126,5 +126,9 @@ panel.inventory = function (ctx) {
   if (inventory.helmet.itemId) {
     draw.item(ctx, {itemId: inventory.helmet.itemId, left: assets.helmet.left, top: assets.helmet.top})
   }
+  // draw shield
+  if (inventory.shield.itemId) {
+    draw.item(ctx, {itemId: inventory.shield.itemId, left: assets.shield.left, top: assets.shield.top})
+  }
 }
 export default panel

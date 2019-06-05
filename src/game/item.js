@@ -41,6 +41,13 @@ var item = [
     slots: 1,
     type: 'helmet',
     armor: 5
+  },
+  {
+    title: 'shield',
+    src: '/static/shield.png',
+    slots: 1,
+    type: 'shield',
+    armor: 5
   }
 ]
 

@@ -67,6 +67,12 @@ mouse.catch = function () {
         data.beforeEquip = 'helmet'
       }
     }
+    if (mouse.isOn(assets.shield)) {
+      if (inventory.shield.itemId) {
+        data.moveItem = inventory.shield.itemId
+        data.beforeEquip = 'shield'
+      }
+    }
     if (mouse.isOn(assets.inventory)) {
       let left = mouse.left() - assets.inventory.left
       let top = mouse.top() - assets.inventory.top
@@ -168,6 +174,17 @@ mouse.dropItem = function () {
           }
         }
       }
+    } else if (mouse.isOn(assets.shield)) {
+      console.log('shield')
+      if (!inventory.shield.itemId) {
+        if (item[data.moveItem].type === 'shield') {
+          inventory.shield.itemId = data.moveItem
+          equipment.main()
+          for (let t = 0; t < item[data.moveItem].slots; t++) {
+            inventory[data.beforeInventory.first][data.beforeInventory.second + t] = null
+          }
+        }
+      }
     } else if (mouse.isOn(assets.slotsBar)) {
       for (let i in slots) {
         if (mouse.isOn(slots[i])) {
@@ -175,7 +192,6 @@ mouse.dropItem = function () {
         }
       }
     } else if (mouse.isOn(assets.inventory)) {
-      console.log(inventory)
       let left = mouse.left() - assets.inventory.left
       let top = mouse.top() - assets.inventory.top
       let i = Math.floor(left / 29)

@@ -76,4 +76,7 @@ inventory.armor = {
 inventory.helmet = {
   itemId: 6
 }
+inventory.shield = {
+  itemId: 7
+}
 export default inventory

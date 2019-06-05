@@ -148,7 +148,6 @@ mob.dropFunction = function (moblvl) {
         data.dropItem[i] = mobProto[moblvl].drops[i].itemId
       }
     }
-    console.log(data.dropItem)
   }
 }
 export default mob

@@ -99,4 +99,10 @@ assets.helmet = {
   width: 26,
   height: 26
 }
+assets.shield = {
+  left: assets.slot.left + 72,
+  top: assets.slot.top - 174,
+  width: 26,
+  height: 26
+}
 export default assets

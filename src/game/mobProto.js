@@ -51,7 +51,13 @@ var mobProto = [
     hp: 250,
     exp: 40,
     dmg: 30,
-    ataks: 0.8
+    ataks: 0.8,
+    drops: [
+      {
+        itemId: 7,
+        chance: 100
+      }
+    ]
   },
   {
     name: 'dziki pies lv.5',

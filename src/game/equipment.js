@@ -11,13 +11,16 @@ equipment.main = function () {
     data.dmg = data.stats.BaseDmg
   }
   // add armor
-  if (inventory.armor.itemId || inventory.helmet.itemId) {
+  if (inventory.armor.itemId || inventory.helmet.itemId || inventory.shield.itemId) {
     data.armor = data.baseArmor
     if (inventory.armor.itemId) {
       data.armor += item[inventory.armor.itemId].armor
     }
     if (inventory.helmet.itemId) {
       data.armor += item[inventory.helmet.itemId].armor
+    }
+    if (inventory.shield.itemId) {
+      data.armor += item[inventory.shield.itemId].armor
     }
   } else {
     data.armor = data.baseArmor
