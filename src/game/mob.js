@@ -25,12 +25,38 @@ mob.mobHp = {
   height: 10,
   color: 'red'
 }
-mob.drop = {
-  left: 700,
-  top: 350,
-  width: 34,
-  height: 60
-}
+mob.drop = [
+  {
+    left: 700,
+    top: 350,
+    width: 34,
+    height: 60
+  },
+  {
+    left: 740,
+    top: 350,
+    width: 34,
+    height: 60
+  },
+  {
+    left: 780,
+    top: 350,
+    width: 34,
+    height: 60
+  },
+  {
+    left: 820,
+    top: 350,
+    width: 34,
+    height: 60
+  },
+  {
+    left: 860,
+    top: 350,
+    width: 34,
+    height: 60
+  }
+]
 mob.drawMob = function (ctx) {
   // draw mob and mob underHp
   if (data.mobResp) {
@@ -45,8 +71,12 @@ mob.drawMob = function (ctx) {
   // drop resp
   if (data.drop) {
     ctx.strokeStyle = 'white'
-    ctx.strokeRect(mob.drop.left, mob.drop.top, mob.drop.width, mob.drop.height)
-    draw.item(ctx, {left: mob.drop.left, top: mob.drop.top, itemId: data.dropItem})
+    for (let i in mob.drop) {
+      if (data.dropItem[i]) {
+        ctx.strokeRect(mob.drop[i].left, mob.drop[i].top, mob.drop[i].width, mob.drop[i].height)
+        draw.item(ctx, {left: mob.drop[i].left, top: mob.drop[i].top, itemId: data.dropItem[i]})
+      }
+    }
   }
 }
 mob.hits = function () {
@@ -108,14 +138,18 @@ mob.atak = function (mouse) {
   }
 }
 mob.dropFunction = function (moblvl) {
-  let random = Math.random(0, 100)
-  random = random * 100
-  random = Math.floor(random)
   if (mobProto[moblvl].drops) {
-    if (mobProto[moblvl].drops[0].chance > random) {
-      data.drop = true
-      data.dropItem = mobProto[moblvl].drops[0].itemId
+    data.dropItem = []
+    for (let i in mobProto[moblvl].drops) {
+      let random = Math.random(0, 100)
+      random = random * 100
+      random = Math.floor(random)
+      if (mobProto[moblvl].drops[i].chance > random) {
+        data.drop = true
+        data.dropItem[i] = mobProto[moblvl].drops[i].itemId
+      }
     }
+    console.log(data.dropItem)
   }
 }
 export default mob

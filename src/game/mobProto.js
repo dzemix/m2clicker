@@ -10,6 +10,10 @@ var mobProto = [
       {
         itemId: 4,
         chance: 100
+      },
+      {
+        itemId: 5,
+        chance: 100
       }
     ]
   },
@@ -33,7 +37,13 @@ var mobProto = [
     hp: 200,
     exp: 30,
     dmg: 20,
-    ataks: 0.8
+    ataks: 0.8,
+    drops: [
+      {
+        itemId: 6,
+        chance: 100
+      }
+    ]
   },
   {
     name: 'dziki pies lv.4',
