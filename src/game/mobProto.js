@@ -65,7 +65,13 @@ var mobProto = [
     hp: 300,
     exp: 60,
     dmg: 40,
-    ataks: 0.8
+    ataks: 0.8,
+    drops: [
+      {
+        itemId: 9,
+        chance: 100
+      }
+    ]
   }
 ]
 export default mobProto

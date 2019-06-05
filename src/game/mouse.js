@@ -8,6 +8,7 @@ import panel from './panel'
 import mobProto from './mobProto'
 import inventory from './inventory'
 import equipment from './equipment'
+import lvl from './lvl'
 var mouse = {
   pageX: null,
   pageY: null,
@@ -153,30 +154,37 @@ mouse.dropItem = function () {
     if (mouse.isOn(assets.weapon)) {
       if (!inventory.weapon.itemId) {
         if (item[data.moveItem].type === 'weapon') {
-          inventory.weapon.itemId = data.moveItem
-          equipment.main()
-          for (let t = 0; t < item[data.moveItem].slots; t++) {
-            inventory[data.beforeInventory.first][data.beforeInventory.second + t] = null
+          if (item[data.moveItem].lvl <= lvl[data.stats.lvl].lvl) {
+            console.log(item[data.moveItem].lvl, lvl[data.stats.lvl].lvl)
+            inventory.weapon.itemId = data.moveItem
+            equipment.main()
+            for (let t = 0; t < item[data.moveItem].slots; t++) {
+              inventory[data.beforeInventory.first][data.beforeInventory.second + t] = null
+            }
           }
         }
       }
     } else if (mouse.isOn(assets.armor)) {
       if (!inventory.armor.itemId) {
         if (item[data.moveItem].type === 'armor') {
-          inventory.armor.itemId = data.moveItem
-          equipment.main()
-          for (let t = 0; t < item[data.moveItem].slots; t++) {
-            inventory[data.beforeInventory.first][data.beforeInventory.second + t] = null
+          if (item[data.moveItem].lvl <= lvl[data.stats.lvl].lvl) {
+            inventory.armor.itemId = data.moveItem
+            equipment.main()
+            for (let t = 0; t < item[data.moveItem].slots; t++) {
+              inventory[data.beforeInventory.first][data.beforeInventory.second + t] = null
+            }
           }
         }
       }
     } else if (mouse.isOn(assets.helmet)) {
       if (!inventory.helmet.itemId) {
         if (item[data.moveItem].type === 'helmet') {
-          inventory.helmet.itemId = data.moveItem
-          equipment.main()
-          for (let t = 0; t < item[data.moveItem].slots; t++) {
-            inventory[data.beforeInventory.first][data.beforeInventory.second + t] = null
+          if (item[data.moveItem].lvl <= lvl[data.stats.lvl].lvl) {
+            inventory.helmet.itemId = data.moveItem
+            equipment.main()
+            for (let t = 0; t < item[data.moveItem].slots; t++) {
+              inventory[data.beforeInventory.first][data.beforeInventory.second + t] = null
+            }
           }
         }
       }
@@ -184,10 +192,12 @@ mouse.dropItem = function () {
       console.log('shield')
       if (!inventory.shield.itemId) {
         if (item[data.moveItem].type === 'shield') {
-          inventory.shield.itemId = data.moveItem
-          equipment.main()
-          for (let t = 0; t < item[data.moveItem].slots; t++) {
-            inventory[data.beforeInventory.first][data.beforeInventory.second + t] = null
+          if (item[data.moveItem].lvl <= lvl[data.stats.lvl].lvl) {
+            inventory.shield.itemId = data.moveItem
+            equipment.main()
+            for (let t = 0; t < item[data.moveItem].slots; t++) {
+              inventory[data.beforeInventory.first][data.beforeInventory.second + t] = null
+            }
           }
         }
       }
@@ -195,10 +205,12 @@ mouse.dropItem = function () {
       console.log('shoes')
       if (!inventory.shoes.itemId) {
         if (item[data.moveItem].type === 'shoes') {
-          inventory.shoes.itemId = data.moveItem
-          equipment.main()
-          for (let t = 0; t < item[data.moveItem].slots; t++) {
-            inventory[data.beforeInventory.first][data.beforeInventory.second + t] = null
+          if (item[data.moveItem].lvl <= lvl[data.stats.lvl].lvl) {
+            inventory.shoes.itemId = data.moveItem
+            equipment.main()
+            for (let t = 0; t < item[data.moveItem].slots; t++) {
+              inventory[data.beforeInventory.first][data.beforeInventory.second + t] = null
+            }
           }
         }
       }
