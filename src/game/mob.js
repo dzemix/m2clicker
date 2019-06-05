@@ -69,7 +69,7 @@ mob.drawMob = function (ctx) {
     draw.square(ctx, mob.mobHp)
   }
   // drop resp
-  if (data.drop) {
+  if (data.dropItem) {
     ctx.strokeStyle = 'white'
     for (let i in mob.drop) {
       if (data.dropItem[i]) {
@@ -145,7 +145,6 @@ mob.dropFunction = function (moblvl) {
       random = random * 100
       random = Math.floor(random)
       if (mobProto[moblvl].drops[i].chance > random) {
-        data.drop = true
         data.dropItem[i] = mobProto[moblvl].drops[i].itemId
       }
     }

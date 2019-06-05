@@ -205,7 +205,7 @@ mouse.event = function () {
   mob.atak(mouse)
   // take drop
 
-  if (data.drop) {
+  if (data.dropItem) {
     for (let q in mob.drop) {
       if (mouse.isOn(mob.drop[q])) {
         if (data.dropItem[q]) {
