@@ -145,7 +145,7 @@ mob.dropFunction = function (moblvl) {
       random = random * 100
       random = Math.floor(random)
       if (mobProto[moblvl].drops[i].chance > random) {
-        data.dropItem[i] = mobProto[moblvl].drops[i].itemId
+        data.dropItem.push(mobProto[moblvl].drops[i].itemId)
       }
     }
   }

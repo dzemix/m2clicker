@@ -9,10 +9,14 @@ var mobProto = [
     drops: [
       {
         itemId: 4,
-        chance: 100
+        chance: 50
       },
       {
         itemId: 5,
+        chance: 10
+      },
+      {
+        itemId: 1,
         chance: 100
       }
     ]
@@ -69,6 +73,10 @@ var mobProto = [
     drops: [
       {
         itemId: 9,
+        chance: 100
+      },
+      {
+        itemId: 8,
         chance: 100
       }
     ]

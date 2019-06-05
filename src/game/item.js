@@ -19,7 +19,12 @@ var item = [
     src: '/static/sword.png',
     slots: 2,
     type: 'weapon',
-    dmg: 10,
+    bon: [
+      {
+        type: 'dmg',
+        value: 10
+      }
+    ],
     lvl: 1
   },
   {
@@ -35,7 +40,12 @@ var item = [
     src: '/static/mnisia.png',
     slots: 2,
     type: 'armor',
-    armor: 10,
+    bon: [
+      {
+        type: 'armor',
+        value: 10
+      }
+    ],
     lvl: 1
   },
   {
@@ -43,7 +53,12 @@ var item = [
     src: '/static/helmet.png',
     slots: 1,
     type: 'helmet',
-    armor: 5,
+    bon: [
+      {
+        type: 'armor',
+        value: 5
+      }
+    ],
     lvl: 1
   },
   {
@@ -51,7 +66,12 @@ var item = [
     src: '/static/shield.png',
     slots: 1,
     type: 'shield',
-    armor: 5,
+    bon: [
+      {
+        type: 'armor',
+        value: 5
+      }
+    ],
     lvl: 1
   },
   {
@@ -59,7 +79,12 @@ var item = [
     src: '/static/shoes.png',
     slots: 1,
     type: 'shoes',
-    armor: 5,
+    bon: [
+      {
+        type: 'armor',
+        value: 5
+      }
+    ],
     lvl: 1
   },
   {
@@ -67,7 +92,12 @@ var item = [
     src: '/static/LongSword.png',
     slots: 2,
     type: 'weapon',
-    dmg: 30,
+    bon: [
+      {
+        type: 'dmg',
+        value: 30
+      }
+    ],
     lvl: 2
   }
 ]

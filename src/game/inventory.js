@@ -74,12 +74,12 @@ inventory.armor = {
   itemId: null
 }
 inventory.helmet = {
-  itemId: 6
+  itemId: null
 }
 inventory.shield = {
-  itemId: 7
+  itemId: null
 }
 inventory.shoes = {
-  itemId: 8
+  itemId: null
 }
 export default inventory
