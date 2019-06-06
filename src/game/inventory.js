@@ -82,4 +82,7 @@ inventory.shield = {
 inventory.shoes = {
   itemId: null
 }
+inventory.earrings = {
+  itemId: 10
+}
 export default inventory

@@ -15,10 +15,12 @@ data.status = {
   overText: '',
   lvlup: false
 }
+data.types = ['weapon', 'armor', 'helmet', 'shield', 'shoes', 'earrings']
 data.stats = {}
 data.stats.lvl = 0
 data.stats.maxlvl = lvl.length - 1
-data.stats.maxHp = 100
+data.stats.baseHp = 100
+data.stats.maxHp = data.stats.baseHp
 data.stats.hp = data.stats.maxHp
 data.stats.exp = 0
 data.stats.BaseDmg = 10

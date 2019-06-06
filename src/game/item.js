@@ -103,6 +103,19 @@ var item = [
       }
     ],
     lvl: 2
+  },
+  {
+    title: 'drwniane kolczyki',
+    src: '/static/earrings.png',
+    slots: 1,
+    type: 'earrings',
+    bon: [
+      {
+        type: 'hp',
+        value: 30
+      }
+    ],
+    lvl: 1
   }
 ]
 

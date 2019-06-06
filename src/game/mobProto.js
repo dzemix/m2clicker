@@ -80,6 +80,76 @@ var mobProto = [
         chance: 100
       }
     ]
+  },
+  {
+    name: 'dzik lv.6',
+    src: '/static/dzik.png',
+    hp: 150,
+    exp: 20,
+    dmg: 15,
+    ataks: 0.8,
+    drops: [
+      {
+        itemId: 10,
+        chance: 100
+      }
+    ]
+  },
+  {
+    name: 'dzik lv.7',
+    src: '/static/dzik.png',
+    hp: 150,
+    exp: 20,
+    dmg: 15,
+    ataks: 0.8,
+    drops: [
+      {
+        itemId: 5,
+        chance: 100
+      }
+    ]
+  },
+  {
+    name: 'dzik lv.8',
+    src: '/static/dzik.png',
+    hp: 150,
+    exp: 20,
+    dmg: 15,
+    ataks: 0.8,
+    drops: [
+      {
+        itemId: 5,
+        chance: 100
+      }
+    ]
+  },
+  {
+    name: 'dzik lv.9',
+    src: '/static/dzik.png',
+    hp: 150,
+    exp: 20,
+    dmg: 15,
+    ataks: 0.8,
+    drops: [
+      {
+        itemId: 5,
+        chance: 100
+      }
+    ]
+  },
+  {
+    name: 'dzik lv.10',
+    src: '/static/dzik.png',
+    hp: 150,
+    exp: 20,
+    dmg: 15,
+    ataks: 0.8,
+    drops: [
+      {
+        itemId: 5,
+        chance: 100
+      }
+    ]
   }
 ]
 export default mobProto

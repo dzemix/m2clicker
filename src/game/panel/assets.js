@@ -111,4 +111,10 @@ assets.shoes = {
   width: 26,
   height: 26
 }
+assets.earrings = {
+  left: assets.slot.left + 107,
+  top: assets.slot.top - 175,
+  width: 26,
+  height: 26
+}
 export default assets

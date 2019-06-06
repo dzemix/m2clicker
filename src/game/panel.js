@@ -117,25 +117,11 @@ panel.inventory = function (ctx) {
     top = assets.slot.top
     left += 29
   }
-  // draw weapon
-  if (inventory.weapon.itemId) {
-    draw.item(ctx, {itemId: inventory.weapon.itemId, left: assets.weapon.left, top: assets.weapon.top})
-  }
-  // draw armor
-  if (inventory.armor.itemId) {
-    draw.item(ctx, {itemId: inventory.armor.itemId, left: assets.armor.left, top: assets.armor.top})
-  }
-  // draw helmet
-  if (inventory.helmet.itemId) {
-    draw.item(ctx, {itemId: inventory.helmet.itemId, left: assets.helmet.left, top: assets.helmet.top})
-  }
-  // draw shield
-  if (inventory.shield.itemId) {
-    draw.item(ctx, {itemId: inventory.shield.itemId, left: assets.shield.left, top: assets.shield.top})
-  }
-  // draw shoes
-  if (inventory.shoes.itemId) {
-    draw.item(ctx, {itemId: inventory.shoes.itemId, left: assets.shoes.left, top: assets.shoes.top})
+  // draw equipment
+  for (let i in data.types) {
+    if (inventory[data.types[i]].itemId) {
+      draw.item(ctx, {itemId: inventory[data.types[i]].itemId, left: assets[data.types[i]].left, top: assets[data.types[i]].top})
+    }
   }
 }
 panel.popout = function (ctx) {
@@ -153,13 +139,12 @@ panel.popout = function (ctx) {
     }
   }
   // popout on equipment
-  let equipment = ['weapon', 'armor', 'helmet', 'shield', 'shoes']
-  for (let i in equipment) {
-    if (mouse.isOn(assets[equipment[i]])) {
-      if (item[inventory[equipment[i]].itemId]) {
-        let value = item[inventory[equipment[i]].itemId]
-        let leftt = (assets[equipment[i]].left) - 150
-        let topp = assets[equipment[i]].top
+  for (let i in data.types) {
+    if (mouse.isOn(assets[data.types[i]])) {
+      if (item[inventory[data.types[i]].itemId]) {
+        let value = item[inventory[data.types[i]].itemId]
+        let leftt = (assets[data.types[i]].left) - 150
+        let topp = assets[data.types[i]].top
         panel.drawPopOut(ctx, value, leftt, topp)
       }
     }
