@@ -116,6 +116,19 @@ var item = [
       }
     ],
     lvl: 1
+  },
+  {
+    title: 'drwniana bransoletka',
+    src: '/static/Drewniana_Bransoleta.png',
+    slots: 1,
+    type: 'bracelets',
+    bon: [
+      {
+        type: 'hp',
+        value: 30
+      }
+    ],
+    lvl: 1
   }
 ]
 

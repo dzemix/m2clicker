@@ -38,6 +38,7 @@ mouse.move = function (ctx) {
   }
 }
 mouse.catch = function () {
+  // catch slotsbar
   if (mouse.isOn(assets.slotsBar)) {
     for (let e in slots) {
       if (mouse.isOn(slots[e])) {

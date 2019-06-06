@@ -153,7 +153,7 @@ panel.popout = function (ctx) {
     draw.square(ctx, {left: leftt, top: topp, width: 150, height: 200, color: 'black'})
     ctx.font = '15px Georgia'
     ctx.fillStyle = 'yellow'
-    ctx.fillText(`name: ${value.title}`, leftt + 4, topp + 17)
+    ctx.fillText(`${value.title}`, leftt + 4, topp + 17)
     ctx.fillText(`lvl: ${value.lvl}`, leftt + 4, topp + 17 + 17)
     if (value.bon) {
       for (let i = 0; i < value.bon.length; i++) {

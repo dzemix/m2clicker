@@ -117,4 +117,10 @@ assets.earrings = {
   width: 26,
   height: 26
 }
+assets.bracelets = {
+  left: assets.slot.left + 70,
+  top: assets.slot.top - 145,
+  width: 26,
+  height: 26
+}
 export default assets
