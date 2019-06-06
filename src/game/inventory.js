@@ -88,4 +88,7 @@ inventory.earrings = {
 inventory.bracelets = {
   itemId: 11
 }
+inventory.necklaces = {
+  itemId: 12
+}
 export default inventory

@@ -15,7 +15,7 @@ data.status = {
   overText: '',
   lvlup: false
 }
-data.types = ['weapon', 'armor', 'helmet', 'shield', 'shoes', 'earrings', 'bracelets']
+data.types = ['weapon', 'armor', 'helmet', 'shield', 'shoes', 'earrings', 'bracelets', 'necklaces']
 data.stats = {}
 data.stats.lvl = 0
 data.stats.maxlvl = lvl.length - 1

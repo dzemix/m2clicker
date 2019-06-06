@@ -80,9 +80,9 @@ var mobProto = [
   {
     name: 'dzik lv.6',
     src: '/static/dzik.png',
-    hp: 150,
-    exp: 20,
-    dmg: 15,
+    hp: 350,
+    exp: 80,
+    dmg: 50,
     ataks: 0.8,
     drops: [
       {
@@ -94,9 +94,9 @@ var mobProto = [
   {
     name: 'dzik lv.7',
     src: '/static/dzik.png',
-    hp: 150,
-    exp: 20,
-    dmg: 15,
+    hp: 400,
+    exp: 100,
+    dmg: 60,
     ataks: 0.8,
     drops: [
       {
@@ -108,13 +108,13 @@ var mobProto = [
   {
     name: 'dzik lv.8',
     src: '/static/dzik.png',
-    hp: 150,
-    exp: 20,
-    dmg: 15,
+    hp: 400,
+    exp: 100,
+    dmg: 60,
     ataks: 0.8,
     drops: [
       {
-        itemId: 5,
+        itemId: 12,
         chance: 100
       }
     ]
@@ -122,9 +122,9 @@ var mobProto = [
   {
     name: 'dzik lv.9',
     src: '/static/dzik.png',
-    hp: 150,
-    exp: 20,
-    dmg: 15,
+    hp: 400,
+    exp: 100,
+    dmg: 60,
     ataks: 0.8,
     drops: [
       {
@@ -136,9 +136,9 @@ var mobProto = [
   {
     name: 'dzik lv.10',
     src: '/static/dzik.png',
-    hp: 150,
-    exp: 20,
-    dmg: 15,
+    hp: 400,
+    exp: 100,
+    dmg: 60,
     ataks: 0.8,
     drops: [
       {

@@ -129,6 +129,19 @@ var item = [
       }
     ],
     lvl: 1
+  },
+  {
+    title: 'drewniany nasior',
+    src: '/static/Wooden_Necklace.png',
+    slots: 1,
+    type: 'necklaces',
+    bon: [
+      {
+        type: 'hp',
+        value: 30
+      }
+    ],
+    lvl: 1
   }
 ]
 
