@@ -8,6 +8,9 @@ equipment.main = function () {
   data.dmg = data.stats.BaseDmg
   data.armor = data.baseArmor
   data.stats.maxHp = data.stats.baseHp
+  // add statistics
+  data.stats.maxHp += 10 * data.champion.health
+  data.dmg += 2 * data.champion.strength
   // add bonuses
   for (let i in data.types) {
     if (inventory[data.types[i]].itemId) {

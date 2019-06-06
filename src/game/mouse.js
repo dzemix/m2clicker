@@ -260,5 +260,20 @@ mouse.event = function () {
       data.atak = false
     }
   }
+  if (panel.interaction.statsPanel) {
+    let stats = function (value) {
+      if (data.champion.points > 0) {
+        data.champion[value]++
+        data.champion.points--
+        equipment.main()
+      }
+    }
+    if (mouse.isOn(assets.statsPanel.health)) {
+      stats('health')
+    }
+    if (mouse.isOn(assets.statsPanel.strength)) {
+      stats('strength')
+    }
+  }
 }
 export default mouse

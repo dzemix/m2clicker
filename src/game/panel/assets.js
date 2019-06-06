@@ -81,6 +81,18 @@ assets.statsPanel = {
   width: 220,
   height: 250,
   color: 'black'}
+assets.statsPanel.health = {
+  left: 125,
+  top: 154,
+  width: 12,
+  height: 12,
+  color: 'yellow'}
+assets.statsPanel.strength = {
+  left: 138,
+  top: 170,
+  width: 12,
+  height: 12,
+  color: 'yellow'}
 assets.weapon = {
   left: assets.slot.left + 8,
   top: assets.slot.top - 200,

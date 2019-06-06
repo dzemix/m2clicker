@@ -30,6 +30,11 @@ data.armor = data.baseArmor
 data.mob = {}
 data.mob.maxHp = mobProto[data.lvl].hp
 data.mob.hp = data.mob.maxHp
+// champion stats
+data.champion = {}
+data.champion.points = 0
+data.champion.health = 0
+data.champion.strength = 0
 
 data.percent = function (max, current) {
   let percent = current / max

@@ -122,6 +122,7 @@ mob.atak = function (mouse) {
             data.stats.exp = 0
             data.status.lvlup = true
             data.status.overText = 'lvl up'
+            data.champion.points++
           }
         }
       } else {
@@ -132,6 +133,7 @@ mob.atak = function (mouse) {
           data.stats.lvl++
           data.stats.exp = 0
           data.status.lvlup = true
+          data.champion.points++
         }
       }
     }

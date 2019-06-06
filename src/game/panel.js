@@ -59,6 +59,11 @@ panel.draw = function (ctx) {
     ctx.fillText(`lvl: ${lvl[data.stats.lvl].lvl}`, 50, 120)
     let expvalue = `exp ${data.stats.exp}/${lvl[data.stats.lvl].exp}`
     ctx.fillText(expvalue, 50, 135)
+    ctx.fillText(`punkty do rozdania: (${data.champion.points})`, 50, 150)
+    ctx.fillText(`health: (${data.champion.health})`, 50, 165)
+    ctx.fillText(`strength: (${data.champion.strength})`, 50, 180)
+    draw.square(ctx, assets.statsPanel.health)
+    draw.square(ctx, assets.statsPanel.strength)
   }
 
   // if inventory true draw inventory
