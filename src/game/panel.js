@@ -43,6 +43,8 @@ panel.draw = function (ctx) {
   draw.image(ctx, '/static/panel2.png', 0, 540)
   // draw hp
   assets.hp.width = 95 * data.percent(data.stats.maxHp, data.stats.hp)
+  let hpregen = 95 * data.percent(data.stats.maxHp, data.stats.hp + data.stats.regHp)
+  draw.square(ctx, {left: assets.hp.left, top: assets.hp.top, width: hpregen, height: assets.hp.height, color: 'blue'})
   draw.square(ctx, assets.hp)
   // draw slots
 

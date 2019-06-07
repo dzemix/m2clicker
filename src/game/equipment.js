@@ -31,7 +31,7 @@ equipment.main = function () {
   console.log(data.dmg, data.armor, data.stats.maxHp)
 }
 equipment.regeneration = function () {
-  if (data.stats.regHp > 0) {
+  if (data.stats.regHp > 0 && data.stats.hp < data.stats.maxHp) {
     data.stats.hp++
     data.stats.regHp--
   }
@@ -40,9 +40,13 @@ equipment.potion = function (id) {
   for (let i in item[id].bon) {
     if (item[id].bon[i].type === 'hp') {
       if (data.stats.hp < data.stats.maxHp) {
-        data.stats.regHp += 10
-        if (data.stats.hp > data.stats.maxHp) {
-          data.stats.hp = data.stats.maxHp
+        if (data.stats.hp + item[id].bon[i].value > data.stats.maxHp) {
+          let value = data.stats.maxHp - data.stats.hp
+          data.stats.regHp = value
+        } else {
+          if (data.stats.hp + data.stats.regHp < data.stats.maxHp) {
+            data.stats.regHp += item[id].bon[i].value
+          }
         }
       }
     }
