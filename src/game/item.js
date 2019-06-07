@@ -2,16 +2,18 @@ var item = [
   {
     title: 'red potion',
     src: '/static/redPotion.png',
-    slots: 1
+    slots: 1,
+    type: 'potion',
+    bon: [
+      {
+        type: 'hp',
+        value: 20
+      }
+    ]
   },
   {
     title: 'blue potion',
     src: '/static/bluePotion.png',
-    slots: 1
-  },
-  {
-    title: 'green potion',
-    src: '/static/greenPotion.png',
     slots: 1
   },
   {
@@ -23,20 +25,8 @@ var item = [
       {
         type: 'dmg',
         value: 10
-      },
-      {
-        type: 'armor',
-        value: 10
       }
     ],
-    lvl: 1
-  },
-  {
-    title: 'glewia',
-    src: '/static/glaive.png',
-    slots: 3,
-    type: 'weapon',
-    dmg: 20,
     lvl: 1
   },
   {

@@ -13,6 +13,7 @@ game.main = function (ctx, mouse) {
     mob.drawMob(ctx)
     panel.draw(ctx)
     mouse.move(ctx)
+    equipment.regeneration()
   }, 20)
   // mob hits
   setInterval(() => {

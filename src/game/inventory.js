@@ -68,7 +68,7 @@ var inventory = [
   ]
 ]
 inventory.weapon = {
-  itemId: 3
+  itemId: 2
 }
 inventory.armor = {
   itemId: null
@@ -83,12 +83,12 @@ inventory.shoes = {
   itemId: null
 }
 inventory.earrings = {
-  itemId: 10
+  itemId: null
 }
 inventory.bracelets = {
-  itemId: 11
+  itemId: null
 }
 inventory.necklaces = {
-  itemId: 12
+  itemId: null
 }
 export default inventory

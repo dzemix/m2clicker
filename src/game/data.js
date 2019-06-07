@@ -22,6 +22,7 @@ data.stats.maxlvl = lvl.length - 1
 data.stats.baseHp = 100
 data.stats.maxHp = data.stats.baseHp
 data.stats.hp = data.stats.maxHp
+data.stats.regHp = 0
 data.stats.exp = 0
 data.stats.BaseDmg = 10
 data.dmg = data.stats.BaseDmg

@@ -1,6 +1,7 @@
-import data from './data'
 import slots from './panel/slots'
 import panel from './panel'
+import item from './item'
+import equipment from './equipment'
 var keyboard = {}
 keyboard.keyListener = function () {
   document.addEventListener('keyup', function (evt) {
@@ -8,13 +9,10 @@ keyboard.keyListener = function () {
     let i = 0
     for (i; i < keys.length; i++) {
       if (evt.key === keys[i]) {
-        if (slots[evt.key - 1].itemId === 0) {
-          if (!data.status.over) {
-            if (data.stats.hp < data.stats.maxHp - 5) {
-              data.stats.hp += 10
-            } else {
-              data.stats.hp = data.stats.maxHp
-            }
+        if (slots[evt.key - 1].itemId !== null) {
+          let id = slots[evt.key - 1].itemId
+          if (item[id].type === 'potion') {
+            equipment.potion(id)
           }
         }
       }
