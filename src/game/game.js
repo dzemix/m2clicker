@@ -10,7 +10,6 @@ game.main = function (ctx, mouse) {
   // draw
   setInterval(() => {
     maps.map(ctx)
-    mob.drawMob(ctx)
     panel.draw(ctx)
     mouse.move(ctx)
     equipment.regeneration()
