@@ -36,7 +36,9 @@ data.champion = {}
 data.champion.points = 0
 data.champion.health = 0
 data.champion.strength = 0
-
+// npc
+data.npc = {}
+data.npc.kowal = false
 data.percent = function (max, current) {
   let percent = current / max
   if (percent < 0) {

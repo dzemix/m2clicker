@@ -88,6 +88,9 @@ panel.draw = function (ctx) {
   ctx.font = '20px Georgia'
   ctx.fillStyle = 'yellow'
   let text = mobProto[data.lvl].name
+  if (data.npc.kowal) {
+    text = 'kowal'
+  }
   ctx.fillText(text, 530, 70)
   // if game is over draw restart button and text
   if (data.status.over) {

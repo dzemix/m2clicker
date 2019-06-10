@@ -2,6 +2,7 @@ import slots from './panel/slots'
 import panel from './panel'
 import item from './item'
 import equipment from './equipment'
+import data from './data'
 var keyboard = {}
 keyboard.keyListener = function () {
   document.addEventListener('keyup', function (evt) {
@@ -29,6 +30,13 @@ keyboard.keyListener = function () {
         panel.interaction.statsPanel = true
       } else {
         panel.interaction.statsPanel = false
+      }
+    }
+    if (evt.key === 'k') {
+      if (data.npc.kowal === false) {
+        data.npc.kowal = true
+      } else {
+        data.npc.kowal = false
       }
     }
   })
